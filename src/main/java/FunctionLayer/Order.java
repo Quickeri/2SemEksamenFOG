@@ -3,14 +3,24 @@ package FunctionLayer;
 public class Order {
     
     private int orderid;
-    private int userid;
+    private int customerid;
+    private int carportid;
     private int length;
     private int width;
     private int height;
 
-    public Order(int orderid, int userid, int length, int width, int height) {
+    public Order(int orderid, int customerid, int carportid, int length, int width, int height) {
         this.orderid = orderid;
-        this.userid = userid;
+        this.customerid = customerid;
+        this.carportid = carportid;
+        this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+    
+    public Order(int orderid, int customerid, int length, int width, int height) {
+        this.orderid = orderid;
+        this.customerid = customerid;
         this.length = length;
         this.width = width;
         this.height = height;
@@ -23,6 +33,14 @@ public class Order {
         this.height = height;
     }
 
+    public int getCarportid() {
+        return carportid;
+    }
+
+    public void setCarportid(int carportid) {
+        this.carportid = carportid;
+    }
+
     public int getOrderid() {
         return orderid;
     }
@@ -31,12 +49,12 @@ public class Order {
         this.orderid = orderid;
     }
 
-    public int getUserid() {
-        return userid;
+    public int getCustomerid() {
+        return customerid;
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public void setCustomerid(int customerid) {
+        this.customerid = customerid;
     }
 
     public int getLength() {

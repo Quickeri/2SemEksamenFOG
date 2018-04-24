@@ -22,7 +22,8 @@
             <table class="table">
                 <tr>
                     <th>Order ID</th>
-                    <th>User ID</th>
+                    <th>Customer ID</th>
+                    <th>Carport ID</th>
                     <th>Length</th>
                     <th>Width</th>
                     <th>Height</th>
@@ -33,7 +34,8 @@
                 { %>
                     <tr>
                     <td> <%= o.getOrderid() %> </td>  
-                    <td> <%= o.getUserid() %> </td>  
+                    <td> <%= o.getCustomerid() %> </td>  
+                    <td> <%= o.getCarportid() %> </td>  
                     <td> <%= o.getLength() %> </td>
                     <td> <%= o.getWidth() %> </td>  
                     <td> <%= o.getHeight() %> </td>                                   

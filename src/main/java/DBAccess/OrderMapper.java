@@ -18,11 +18,11 @@ public class OrderMapper {
             String SQL = "INSERT INTO orders VALUES(null, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement( SQL );
             
-            ps.setInt(1, o.getUserid());
-            ps.setInt(2, o.getLength());
-            ps.setInt(3, o.getWidth());
-            ps.setInt(4, o.getHeight());
-            ps.setBoolean(5, false);
+            ps.setInt(1, o.getCustomerid());
+            ps.setInt(2, o.getCarportid());
+            ps.setInt(3, o.getLength());
+            ps.setInt(4, o.getWidth());
+            ps.setInt(5, o.getHeight());
             
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
@@ -86,12 +86,12 @@ public class OrderMapper {
             
             while (rs.next())
             {
-                int userid = rs.getInt("userid");
+                int customerid = rs.getInt("customerid");
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
                 int height = rs.getInt("height");
 
-                return new Order(orderid, userid, length, width, height);
+                return new Order(orderid, customerid, length, width, height);
             }
         }
         catch (SQLException | ClassNotFoundException ex)
@@ -102,14 +102,14 @@ public class OrderMapper {
     }
     
     // Returns an arraylist of orders from a customer
-    public static ArrayList<Order> getOrders(int userid) throws LoginSampleException{
+    public static ArrayList<Order> getOrders(int customerid) throws LoginSampleException{
         ArrayList<Order> orders = new ArrayList();
         try {
         Connection con = Connector.connection();
             
-        String SQL = "SELECT * FROM orders WHERE userid = ?";
+        String SQL = "SELECT * FROM orders WHERE customerid = ?";
         PreparedStatement ps = con.prepareStatement( SQL );
-        ps.setInt(1, userid);
+        ps.setInt(1, customerid);
         ResultSet rs = ps.executeQuery();
             
             while (rs.next())
@@ -119,7 +119,7 @@ public class OrderMapper {
                 int width = rs.getInt("width");
                 int height = rs.getInt("height");
 
-                Order o = new Order(orderid, userid, length, width, height);
+                Order o = new Order(orderid, customerid, length, width, height);
 
                 orders.add(o);
             }
@@ -142,12 +142,13 @@ public class OrderMapper {
             while (rs.next())
             {
                 int orderid = rs.getInt("orderid");
-                int userid = rs.getInt("userid");
+                int customerid = rs.getInt("userid");
+                int carportid = rs.getInt("carportid");
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
                 int height = rs.getInt("height");
 
-                Order o = new Order(orderid, userid, length, width, height);
+                Order o = new Order(orderid, customerid, carportid, length, width, height);
 
                 orders.add(o);
             }
