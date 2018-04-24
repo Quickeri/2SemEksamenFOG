@@ -87,11 +87,12 @@ public class OrderMapper {
             while (rs.next())
             {
                 int customerid = rs.getInt("customerid");
+                int carportid = rs.getInt("carportid");
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
                 int height = rs.getInt("height");
 
-                return new Order(orderid, customerid, length, width, height);
+                return new Order(orderid, customerid, carportid, length, width, height);
             }
         }
         catch (SQLException | ClassNotFoundException ex)
@@ -115,11 +116,12 @@ public class OrderMapper {
             while (rs.next())
             {
                 int orderid = rs.getInt("orderid");
+                int carportid = rs.getInt("carportid");
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
                 int height = rs.getInt("height");
 
-                Order o = new Order(orderid, customerid, length, width, height);
+                Order o = new Order(orderid, customerid, carportid, length, width, height);
 
                 orders.add(o);
             }
