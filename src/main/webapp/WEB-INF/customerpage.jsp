@@ -12,7 +12,8 @@
         <title>Customer home page</title>
     </head>
     <body>
-        <h1>Hello <%=request.getParameter( "email" )%> </h1>
+        <%@include file="../includes/fogmenu.jsp" %> 
+        <h1>Hello <%=session.getAttribute("email")%> </h1>
         You are now logged in as a customer of our wonderful site.
     </body>
 </html>

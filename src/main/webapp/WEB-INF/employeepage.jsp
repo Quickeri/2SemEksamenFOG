@@ -8,12 +8,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <%@include file="../includes/fogmenu.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Employee home page</title>
     </head>
     <body>
-        
-        <h1>Hello <%=request.getParameter( "email")%> </h1>
+        <h1>Hello <%=session.getAttribute("email")%> </h1>
         You are now logged in as a EMPLOYEE of our wonderful site.
         
         <a href="FrontController?command=vieworders">View Orders</a>

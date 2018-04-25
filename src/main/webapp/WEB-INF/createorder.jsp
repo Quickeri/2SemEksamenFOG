@@ -12,6 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@include file="../includes/fogmenu.jsp" %>
         <h1>Byg-selv carport</h1>
         <H2> Indtast mål på carport </H2>
         

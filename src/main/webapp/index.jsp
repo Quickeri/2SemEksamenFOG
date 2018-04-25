@@ -3,16 +3,18 @@
     Created on : Aug 22, 2017, 2:01:06 PM
     Author     : kasper
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Welcome page</title>
     </head>
     <body>
+        <%@include file="/includes/fogmenu.jsp" %>
         <h1>Welcome to Sem 2</h1>
+        <p>logged in as: <%=session.getAttribute("email")%>.</p>
         
         <table>
             <tr><td>Login</td>
@@ -20,10 +22,10 @@
                     <form name="login" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="login">
                         Email:<br>
-                        <input type="text" name="email" value="someone@nowhere.com">
+                        <input type="text" name="email" value="mads.madsen@nowhere.com">
                         <br>
                         Password:<br>
-                        <input type="password" name="password" value="sesam">
+                        <input type="password" name="password" value="5678">
                         <br>
                         <input type="submit" value="Submit">
                     </form>

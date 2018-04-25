@@ -14,7 +14,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View Orders</title>
     </head>
-    <body>
+        <%@include file="../includes/fogmenu.jsp" %>
+    
         <% List<Order> orders = (ArrayList<Order>) request.getAttribute("list");%>
         <h1>View Orders</h1>
 
