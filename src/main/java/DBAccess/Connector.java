@@ -14,7 +14,7 @@ public class Connector {
 //    private static final String url = "jdbc:mysql://46.101.253.149:3306/useradmin";
     private static final String url = "jdbc:mysql://localhost:3306/useradmin?serverTimezone=UTC";
     private static final String username = "root";
-    private static final String password = "eF9jq14ivLr2";
+    private static final String password = "admin";
 
     private static Connection singleton;
 

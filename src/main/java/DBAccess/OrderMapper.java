@@ -137,20 +137,22 @@ public class OrderMapper {
         try{
         Connection con = Connector.connection();
             
-        String SQL = "SELECT * FROM orders";
+        String SQL = "select orders.orderid, customer.name, customer.email, orders.carportid, orders.Height, orders.Length, orders.Width, orders.customerid from customer inner join orders on customer.customerid = orders.customerid";
         PreparedStatement ps = con.prepareStatement( SQL );
         ResultSet rs = ps.executeQuery();
             
             while (rs.next())
             {
                 int orderid = rs.getInt("orderid");
-                int customerid = rs.getInt("userid");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
                 int carportid = rs.getInt("carportid");
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
                 int height = rs.getInt("height");
+                int customerid = rs.getInt("customerid");
 
-                Order o = new Order(orderid, customerid, carportid, length, width, height);
+                Order o = new Order(orderid, name, email, carportid, length, width, height, customerid);
 
                 orders.add(o);
             }

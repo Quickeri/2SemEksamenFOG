@@ -17,32 +17,35 @@
     <body>
         <% List<Order> orders = (ArrayList<Order>) request.getAttribute("list");%>
         <h1>View Orders</h1>
-        
+
         <div id="orderTable">   
             <table class="table">
                 <tr>
                     <th>Order ID</th>
-                    <th>Customer ID</th>
+                    <th>Customer name</th>
+                    <th>Customer email</th>
                     <th>Carport ID</th>
                     <th>Length</th>
                     <th>Width</th>
                     <th>Height</th>
+                    <th>Customer ID</th>
                 </tr>
-                
-                 <%
-                for(Order o : orders)
-                { %>
-                    <tr>
-                    <td> <%= o.getOrderid() %> </td>  
-                    <td> <%= o.getCustomerid() %> </td>  
-                    <td> <%= o.getCarportid() %> </td>  
-                    <td> <%= o.getLength() %> </td>
-                    <td> <%= o.getWidth() %> </td>  
-                    <td> <%= o.getHeight() %> </td>                                   
+
+                <%
+                     for (Order o : orders) {%>
+                <tr>
+                    <td> <%= o.getOrderid()%> </td>  
+                    <td> <%= o.getName()%> </td>  
+                    <td> <%= o.getEmail()%> </td>  
+                    <td> <%= o.getCarportid()%> </td>  
+                    <td> <%= o.getLength()%> </td>
+                    <td> <%= o.getWidth()%> </td>  
+                    <td> <%= o.getHeight()%> </td>                                   
+                    <td> <%= o.getCustomerid()%> </td>
                 </tr> 
-                <% } %>
+                <% }%>
             </table>              
         </div>
-         <a href="FrontController?command=rolepage">Back</a> 
+        <a href="FrontController?command=rolepage">Back</a> 
     </body>
 </html>
