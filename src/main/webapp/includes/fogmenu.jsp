@@ -26,10 +26,7 @@
         background-color: #555;
         color: darkgray;
     }
-    .topMenu fog:hover{
-        background-color: #555;
-    }
-    .topMenu fog {
+    .button {
         float: left;
         display: block;
         color: #f1f1f1;
@@ -39,19 +36,19 @@
 <%if(session.getAttribute("id")== null)
 {%>
 <div class="topMenu">
-    <fog href="index.jsp" class="navbar-left"><img src="https://d3ikkoqs9ddhdl.cloudfront.net/img/logo/pageflip/6d77Ug_6fhnjpi14.png"></fog>
+    <a href="index.jsp" class="navbar-left"><img src="https://d3ikkoqs9ddhdl.cloudfront.net/img/logo/pageflip/6d77Ug_6fhnjpi14.png"></a>
 </div>
 <%}else if(session.getAttribute("role").equals("employee")){%>
     <div class="topMenu">
-    <fog href="index.jsp" class="navbar-left"><img src="https://d3ikkoqs9ddhdl.cloudfront.net/img/logo/pageflip/6d77Ug_6fhnjpi14.png"></fog>
+    <a href="FrontController?command=rolepage" class="navbar-left"><img src="https://d3ikkoqs9ddhdl.cloudfront.net/img/logo/pageflip/6d77Ug_6fhnjpi14.png"></a>
     <a href="FrontController?command=vieworders" class="button">Manage Customer Orders</a>
-    <a href="FrontController?command=logout"> <span class="glyphicon glyphicon-log-out"> </span> Log out</button></a>
+    <a href="FrontController?command=logout"> <span class="glyphicon glyphicon-log-out" name="icon"> </span> Log out</button></a>
     
 </div>
 <%}else{%>
 <div class="topMenu">
-    <fog href="index.jsp" class="navbar-left"><img src="https://d3ikkoqs9ddhdl.cloudfront.net/img/logo/pageflip/6d77Ug_6fhnjpi14.png"></fog>
-    <a href="FrontController?command=logout"> <span class="glyphicon glyphicon-log-out"> </span> Log out</button></a>
+    <a href="FrontController?command=rolepage" class="navbar-left"><img src="https://d3ikkoqs9ddhdl.cloudfront.net/img/logo/pageflip/6d77Ug_6fhnjpi14.png"></a>
+    <a href="FrontController?command=logout"> <span class="glyphicon glyphicon-log-out" name ="icon"> </span> Log out</button></a>
 </div>
 <%}%>
 
