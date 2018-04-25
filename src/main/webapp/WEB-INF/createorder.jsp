@@ -14,5 +14,20 @@
     <body>
         <h1>Byg-selv carport</h1>
         <H2> Indtast mål på carport </H2>
+        
+        <form name="createorder" action="FrontController" method="POST">
+            <input type="hidden" name="command" value="createorder">
+            Længde:<br>
+            <input type="number" name="length">
+            <br>
+            Bredde:<br>
+            <input type="number" name="width">
+            <br>
+            Højde:<br>
+            <input type="number" name="height">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        
     </body>
 </html>
