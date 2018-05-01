@@ -47,6 +47,6 @@
                 <% }%>
             </table>              
         </div>
-        <a href="FrontController?command=rolepage">Back</a> 
+        <a href="FrontController?command=viewsingleorder">view single order</a> 
     </body>
 </html>
