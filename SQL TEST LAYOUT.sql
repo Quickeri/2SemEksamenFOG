@@ -115,13 +115,10 @@ DROP TABLE IF EXISTS `standardcarport`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `standardcarport` (
   `stdcarportid` int(11) NOT NULL AUTO_INCREMENT,
-  `stdcarportname` varchar(45) NOT NULL,
-  `stdcarportrooftype` varchar(45) NOT NULL,
-  `stdcarportheigth` int(11) NOT NULL,
-  `stdcarportlength` int(11) NOT NULL,
-  `stdcarportwidth` int(11) NOT NULL,
-  `stdcarportroofmaterial` varchar(45) NOT NULL,
-  `stdcarportdescription` text,
+  `heigth` int(11) NOT NULL,
+  `length` int(11) NOT NULL,
+  `width` int(11) NOT NULL,
+  `stddescription` text,
   PRIMARY KEY (`stdcarportid`),
   UNIQUE KEY `idstandardcarport_UNIQUE` (`stdcarportid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -145,4 +142,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-01 13:47:30
+-- Dump completed on 2018-05-01 14:08:43
