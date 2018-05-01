@@ -13,7 +13,7 @@
     </head>
     <body>
         <%@include file="/includes/fogmenu.jsp" %>
-        <h1>Welcome to Sem 2</h1>
+        <h1>Welcome Fog Carport</h1>
         <p>logged in as: <%=session.getAttribute("email")%>.</p>
         
         <table>
@@ -22,10 +22,10 @@
                     <form name="login" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="login">
                         Email:<br>
-                        <input type="text" name="email" value="mads.madsen@nowhere.com">
+                        <input type="text" name="email" value="jesper.jespersen@somewhere.com">
                         <br>
                         Password:<br>
-                        <input type="password" name="password" value="5678">
+                        <input type="password" name="password" value="1234">
                         <br>
                         <input type="submit" value="Submit">
                     </form>
