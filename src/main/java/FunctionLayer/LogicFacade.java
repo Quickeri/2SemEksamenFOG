@@ -19,8 +19,8 @@ public class LogicFacade {
         UserMapper.createUser( user );
         return user;
     }
-    public static Order createOrder( int customerid, int length, int width, int height ) throws LoginSampleException {
-        Order order = new Order( customerid, length, width, height );
+    public static Order createOrder( int customerid, int carportid, int length, int width, int height ) throws LoginSampleException {
+        Order order = new Order( customerid, carportid, length, width, height );
         OrderMapper.createOrder( order );
         return order;
     }

@@ -18,6 +18,9 @@
         
         <form name="createorder" action="FrontController" method="POST">
             <input type="hidden" name="command" value="createorder">
+            CarportId:<br>
+            <input type="number" name="carportid">
+            <br>
             Længde:<br>
             <input type="number" name="length">
             <br>

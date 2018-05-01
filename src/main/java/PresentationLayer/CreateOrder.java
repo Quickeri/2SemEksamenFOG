@@ -22,23 +22,21 @@ public class CreateOrder extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         
-        if(request.getParameter("length") != null){
-        
         HttpSession session = request.getSession();
         
         User user = (User) session.getAttribute("user");
         
         int customerId = user.getId();
+        int carportId = Integer.parseInt(request.getParameter("carportid"));
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
         int height = Integer.parseInt(request.getParameter("height"));
         
-        Order order = LogicFacade.createOrder(customerId, length, width, height);
+        Order order = LogicFacade.createOrder(customerId, carportId, length, width, height);
         
         request.setAttribute("order", order);
-        }
         
-        return "createorder";
+        return "ordercarportpage";
     }
     
 }

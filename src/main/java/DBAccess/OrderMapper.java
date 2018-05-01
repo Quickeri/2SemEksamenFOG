@@ -20,13 +20,13 @@ public class OrderMapper {
             
             ps.setInt(1, o.getCustomerid());
             ps.setInt(2, o.getCarportid());
-            ps.setInt(3, o.getLength());
-            ps.setInt(4, o.getWidth());
-            ps.setInt(5, o.getHeight());
+            ps.setInt(3, o.getHeight());
+            ps.setInt(4, o.getLength());
+            ps.setInt(5, o.getWidth());
             
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
-//            ex.printStackTrace();
+            ex.printStackTrace();
             throw new LoginSampleException( "Could not validate order" );
         }
     }
