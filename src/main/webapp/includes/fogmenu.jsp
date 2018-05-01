@@ -50,6 +50,7 @@
 <div class="topMenu">
     <a href="FrontController?command=rolepage" class="navbar-left"><img src="https://d3ikkoqs9ddhdl.cloudfront.net/img/logo/pageflip/6d77Ug_6fhnjpi14.png"></a>
     <a href="FrontController?command=ordercarportpage" class="button">bestil carport</a>
+    <a href="FrontController?command=customerorders" class="button">Se dine bestilte carporte</a>
     <a href="FrontController?command=logout"> <span class="glyphicon glyphicon-log-out" name ="icon"> </span> Log ud</button></a>
 
 </div>
