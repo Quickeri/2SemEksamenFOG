@@ -4,6 +4,7 @@
     Author     : alber
 --%>
 
+<%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,7 +32,20 @@
             <input type="number" name="height">
             <br>
             <input type="submit" value="Submit">
+            
         </form>
-        
+        <% if (request.getAttribute("order") != null) {
+                Order order = (Order) request.getAttribute("order");
+        %>
+
+        <h4> Her vises en simpel skitse af carporten set ovenfra</h4>
+
+        <SVG width="<%= order.getWidth() + 200%>" height="<%= order.getLength() + 200%>">
+        <rect x="100" y="10" height="<%= order.getHeight()%>" width="<%= order.getLength()%>"
+              style="stroke:#000000; stroke-width: 4; fill: #F5F5DC"/>
+        </SVG>
+
+        <% }%>
+
     </body>
 </html>
