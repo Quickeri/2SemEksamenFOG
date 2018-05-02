@@ -19,7 +19,7 @@
         display: block;
         color: #f1f1f1;
         text-align: center;
-        padding: 27px 27px;
+        padding: 20px 20px;
         text-decoration: none;
     }
     .topMenu a:hover{

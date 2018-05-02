@@ -19,6 +19,12 @@
         <% List<Order> orders = (ArrayList<Order>) request.getAttribute("list");%>
         <h1>View Orders</h1>
 
+        <form action="FrontController" method="post" id="formSearch">
+            <input type="hidden" name="command" value="searchorder">
+            <input type="number" name="orderid" placeholder="orderid" required>
+            <input type="submit" value="SEARCH ORDER" class="button">
+        </form>
+        
         <div id="orderTable">   
             <table class="table">
                 <tr>

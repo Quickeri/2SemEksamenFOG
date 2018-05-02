@@ -30,8 +30,8 @@ public class LogicFacade {
     public static boolean deleteOrder( int orderid ){
         return OrderMapper.deleteOrder( orderid );
     }
-    public static Order getOrder( int userid ) throws LoginSampleException{
-        Order order = OrderMapper.getOrder( userid );
+    public static Order getOrder( int orderid ) throws LoginSampleException{
+        Order order = OrderMapper.getOrder( orderid );
         return order;
     }
     public static ArrayList<Order> getOrders( int userid ) throws LoginSampleException{
