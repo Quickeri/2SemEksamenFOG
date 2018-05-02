@@ -1,6 +1,7 @@
 package DBAccess;
 
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.Order;
 import FunctionLayer.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -57,5 +58,21 @@ public class UserMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
-
+  
+    public static void updateUser (User user) throws LoginSampleException{
+        try {
+            Connection con = Connector.connection();
+            String SQL = "UPDATE users SET email = ?, password = ? WHERE id = ?";
+            PreparedStatement ps = con.prepareStatement( SQL );
+            
+            ps.setString(1, user.getEmail());
+            ps.setString(2, user.getPassword());
+            ps.setInt(3, user.getId());
+            
+            ps.executeUpdate();
+            }
+        catch ( ClassNotFoundException | SQLException ex ) {
+            throw new LoginSampleException(ex.getMessage());
+        }
+    }
 }

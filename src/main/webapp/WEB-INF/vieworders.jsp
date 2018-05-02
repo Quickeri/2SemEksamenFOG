@@ -22,7 +22,7 @@
         <form action="FrontController" method="post" id="formSearch">
             <input type="hidden" name="command" value="searchorder">
             <input type="number" name="orderid" placeholder="orderid" required>
-            <input type="submit" value="SEARCH ORDER" class="button">
+            <input type="submit" value="Search Order">
         </form>
         
         <div id="orderTable">   

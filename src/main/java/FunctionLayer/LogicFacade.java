@@ -19,12 +19,16 @@ public class LogicFacade {
         UserMapper.createUser( user );
         return user;
     }
+    public static User updateUser( User user ) throws LoginSampleException {
+        UserMapper.updateUser( user );
+        return user;
+    }
     public static Order createOrder( int customerid, int carportid, int length, int width, int height ) throws LoginSampleException {
         Order order = new Order( customerid, carportid, length, width, height );
         OrderMapper.createOrder( order );
         return order;
     }
-    public static boolean updateOrder( Order o ) throws ClassNotFoundException{
+    public static boolean updateOrder( Order o ) throws LoginSampleException {
         return OrderMapper.updateOrder( o );   
     }
     public static boolean deleteOrder( int orderid ){

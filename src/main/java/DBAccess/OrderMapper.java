@@ -32,7 +32,7 @@ public class OrderMapper {
     }
     
     // Updates an order
-    public static boolean updateOrder(Order o) throws ClassNotFoundException{
+    public static boolean updateOrder(Order o) throws LoginSampleException{
         try
         {
         Connection con = Connector.connection();
@@ -50,8 +50,9 @@ public class OrderMapper {
         } catch (SQLException | ClassNotFoundException ex)
         {
             ex.printStackTrace();
+            throw new LoginSampleException( "Could not validate order" );
         }
-        return false;
+//        return false;
     }
     
     // Deletes an order
