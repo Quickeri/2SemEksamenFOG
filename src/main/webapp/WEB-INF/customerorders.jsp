@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="FunctionLayer.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="FunctionLayer.Order"%>
@@ -17,8 +18,7 @@
         <h1>All your placed orders</h1>
         <p>Below you can see all your orders<br> 
         </p>
-        <%User user = (User) session.getAttribute("user");%> 
-        <% ArrayList<Order> order = LogicFacade.getOrders(user.getId()); %>
+        <% List<Order> orders = (ArrayList<Order>) request.getAttribute("list");%>
         <div class="orderTable2">   
             <table class="table">
                 <tr>
@@ -30,7 +30,7 @@
                 </tr>
                 
                  <%
-                for(Order o : order)
+                for(Order o : orders)
                 { %>
                     <tr>
                     <td> <%= o.getOrderid() %> </td>
