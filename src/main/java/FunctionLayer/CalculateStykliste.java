@@ -15,7 +15,8 @@ public class CalculateStykliste {
     
     public Stykliste makeStykliste(Order o){
         int stolper = (o.getLength()/100 * 2) + (o.getWidth()/100);
-        Stykliste stykliste = new Stykliste(stolper);
+        int spær = o.getLength()/100;
+        Stykliste stykliste = new Stykliste(stolper, spær);
         
         return stykliste;
     }

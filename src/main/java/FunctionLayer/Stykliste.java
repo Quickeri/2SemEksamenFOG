@@ -15,8 +15,9 @@ public class Stykliste {
     private int spær;
     private int søm;
 
-    public Stykliste(int stolper) {
+    public Stykliste(int stolper, int spær) {
         this.stolper = stolper;
+        this.spær = spær;
     }
 
     public int getStolper() {

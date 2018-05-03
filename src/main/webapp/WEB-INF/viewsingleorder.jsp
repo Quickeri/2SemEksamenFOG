@@ -46,7 +46,7 @@
                 </tr>   
                 <tr>
                     <td> <%= s.getStolper() %> </td>  
-                    <td> 0 </td>  
+                    <td> <%= s.getSpær() %> </td>  
                     <td> 0 </td>                                
                 </tr> 
             </table>              
