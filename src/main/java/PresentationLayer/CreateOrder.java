@@ -27,12 +27,11 @@ public class CreateOrder extends Command {
         User user = (User) session.getAttribute("user");
         
         int customerId = user.getId();
-        int carportId = Integer.parseInt(request.getParameter("carportid"));
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
         int height = Integer.parseInt(request.getParameter("height"));
         
-        Order order = LogicFacade.createOrder(customerId, carportId, length, width, height);
+        Order order = LogicFacade.createOrder(customerId, length, width, height);
         
         request.setAttribute("order", order);
         

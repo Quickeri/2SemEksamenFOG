@@ -31,7 +31,6 @@
                     <th>Order ID</th>
                     <th>Customer name</th>
                     <th>Customer email</th>
-                    <th>Carport ID</th>
                     <th>Length</th>
                     <th>Width</th>
                     <th>Height</th>
@@ -43,8 +42,7 @@
                 <tr>
                     <td> <%= o.getOrderid()%> </td>  
                     <td> <%= o.getName()%> </td>  
-                    <td> <%= o.getEmail()%> </td>  
-                    <td> <%= o.getCarportid()%> </td>  
+                    <td> <%= o.getEmail()%> </td>   
                     <td> <%= o.getLength()%> </td>
                     <td> <%= o.getWidth()%> </td>  
                     <td> <%= o.getHeight()%> </td>                                   

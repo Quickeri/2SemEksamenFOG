@@ -14,51 +14,33 @@ public class Order {
     private int width;
     private int height;
 
-    public Order(int orderid, String name, String email, int customerid, int carportid, int length, int width, int height) {
+    public Order(int orderid, String name, String email, int customerid, int length, int width, int height) {
         this.orderid = orderid;
         this.name = name;
         this.email = email;
         this.customerid = customerid;
-        this.carportid = carportid;
         this.length = length;
         this.width = width;
         this.height = height;
     }
 
     
-    public Order(int customerid, int carportid, int length, int width, int height) {
+    public Order(int customerid, int length, int width, int height) {
         this.customerid = customerid;
-        this.carportid = carportid;
         this.length = length;
         this.width = width;
         this.height = height;
     }
 
     
-    public Order(int orderid, int customerid, int carportid, int length, int width, int height) {
+    public Order(int orderid, int customerid, int length, int width, int height) {
         this.orderid = orderid;
         this.customerid = customerid;
-        this.carportid = carportid;
         this.length = length;
         this.width = width;
         this.height = height;
     }
     
-//    public Order(int orderid, int customerid, int length, int width, int height) {
-//        this.orderid = orderid;
-//        this.customerid = customerid;
-//        this.length = length;
-//        this.width = width;
-//        this.height = height;
-//    }
-
-    public Order(int orderid, int length, int width, int height) {
-        this.orderid = orderid;
-        this.length = length;
-        this.width = width;
-        this.height = height;
-    }
-
     public int getOrderid() {
         return orderid;
     }
