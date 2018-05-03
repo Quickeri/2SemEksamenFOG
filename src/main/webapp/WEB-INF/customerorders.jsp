@@ -14,10 +14,7 @@
     <body>
         <%@include file="../includes/fogmenu.jsp" %>
         
-        
-        <h1>All your placed orders</h1>
-        <p>Below you can see all your orders<br> 
-        </p>
+        <h1>Her kan du se dine ordre</h1>
         <% List<Order> orders = (ArrayList<Order>) request.getAttribute("list");%>
         <div class="orderTable2">   
             <table class="table">
@@ -33,9 +30,9 @@
                 { %>
                     <tr>
                     <td> <%= o.getOrderid() %> </td>
-                    <td> <%= o.getHeight() %> </td>
-                    <td> <%= o.getLength() %> </td>
-                    <td> <%= o.getWidth() %> </td>
+                    <td> <%= o.getHeight() %>cm </td>
+                    <td> <%= o.getLength() %>cm </td>
+                    <td> <%= o.getWidth() %>cm </td>
                     
                 </tr> 
                 <% } %>

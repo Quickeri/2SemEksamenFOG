@@ -15,9 +15,12 @@
     <body>
         <%@include file="../includes/fogmenu.jsp" %>
         <h1>Byg-selv carport</h1>
-        <p onclick="carportType1()">Carport Type 1: click på denne carport for at få en carport med målene 600cm x 300cm x 250cm.</p>
-        <p onclick="carportType2()">Carport Type 2: click på denne carport for at få en carport med målene 700cm x 400cm x 250cm.</p>
-        <p onclick="carportType3()">Carport Type 3: click på denne carport for at få en carport med målene 500cm x 300cm x 250cm.</p>
+        <p>Carport Type 1: 600cm x 300cm x 250cm.</p>
+        <button type="button" onclick="carportType1()">Carport Type 1</button>
+        <p>Carport Type 2: 700cm x 400cm x 250cm.</p>
+        <button type="button" onclick="carportType2()">Carport Type 2</button>
+        <p>Carport Type 3: 500cm x 300cm x 250cm.</p>
+        <button type="button" onclick="carportType3()">Carport Type 3</button>
         <script>
             function carportType1() {
                 document.getElementById("length").value = "600";
@@ -40,15 +43,15 @@
         <form name="createorder" action="FrontController" method="POST">
             <input type="hidden" name="command" value="createorder">
             Længde:<br>
-            <input type="number" name="length" value="" id="length">
+            <input type="number" name="length" value="" id="length" required>
             <br>
             Bredde:<br>
-            <input type="number" name="width" value="" id="width">
+            <input type="number" name="width" value="" id="width" required>
             <br>
             Højde:<br>
-            <input type="number" name="height" value="" id="height">
+            <input type="number" name="height" value="" id="height" required>
             <br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Bestil">
             
         </form>
         <% if (request.getAttribute("order") != null) {

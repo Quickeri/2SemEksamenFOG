@@ -13,9 +13,8 @@
         <title>Employee home page</title>
     </head>
     <body>
-        <h1>Hello <%=session.getAttribute("email")%> </h1>
-        You are now logged in as a EMPLOYEE of our wonderful site.
+        <h1>Hej <%=session.getAttribute("email")%> </h1>
+        Du er nu logget ind som admin
         
-        <a href="FrontController?command=vieworders">View Orders</a>
     </body>
 </html>

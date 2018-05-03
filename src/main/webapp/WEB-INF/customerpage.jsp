@@ -13,7 +13,7 @@
     </head>
     <body>
         <%@include file="../includes/fogmenu.jsp" %> 
-        <h1>Hello <%=session.getAttribute("email")%> </h1>
-        You are now logged in as a customer of our wonderful site.
+        <h1>Hej <%=session.getAttribute("email")%> </h1>
+        Du er nu logget ind som kunde
     </body>
 </html>

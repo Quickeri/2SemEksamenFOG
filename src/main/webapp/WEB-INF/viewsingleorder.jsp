@@ -17,22 +17,22 @@
         <%@include file="../includes/fogmenu.jsp" %>
         <% Order o = (Order) request.getAttribute("order"); %>
         <% Stykliste s = (Stykliste) request.getAttribute("stykliste"); %>
-        <h1>View single order!</h1>
+        <h1>Se Ordre</h1>
         <div id="orderTable">   
             <table class="table">
                 <tr>
                     <th>Order ID</th>
-                    <th>User ID</th>
-                    <th>Length</th>
-                    <th>Width</th>
-                    <th>Height</th>
+                    <th>Kunde ID</th>
+                    <th>Længde</th>
+                    <th>Bredde</th>
+                    <th>Højde</th>
                 </tr>   
                 <tr>
                     <td> <%= o.getOrderid() %> </td>  
                     <td> <%= o.getCustomerid() %> </td>  
-                    <td> <%= o.getLength() %> </td>
-                    <td> <%= o.getWidth() %> </td>  
-                    <td> <%= o.getHeight() %> </td>                                   
+                    <td> <%= o.getLength() %>cm </td>
+                    <td> <%= o.getWidth() %>cm </td>  
+                    <td> <%= o.getHeight() %>cm </td>                                   
                 </tr> 
             </table>              
         </div>
@@ -51,27 +51,30 @@
                 </tr> 
             </table>              
         </div>
+                    
+        <h1>Opdater Ordre</h1>            
         <form name="updateorder" action="FrontController" method="POST">
             <input type="hidden" name="command" value="updateorder">
             <input type="hidden" name="orderid" value="<%= o.getOrderid() %>">
             Længde:<br>
-            <input type="number" name="length" value="<%= o.getLength() %>">
+            <input type="number" name="length" value="<%= o.getLength() %>" required>
             <br>
             Bredde:<br>
-            <input type="number" name="width" value="<%= o.getWidth() %>">
+            <input type="number" name="width" value="<%= o.getWidth() %>" required>
             <br>
             Højde:<br>
-            <input type="number" name="height" value="<%= o.getHeight() %>">
+            <input type="number" name="height" value="<%= o.getHeight() %>" required>
             <br>
-            <input type="submit" value="Submit">   
+            <input type="submit" value="Opdater Ordre">   
         </form>
             
+        <h1>Slet Ordre</h1>      
         <form name="deleteorder" action="FrontController" method="POST">
             <input type="hidden" name="command" value="deleteorder">
             <input type="hidden" name="orderid" value="<%= o.getOrderid() %>">
-            <input type="submit" value="Delete Order" onclick="return confirm('Are you sure you want to delete this order?')">   
+            <input type="submit" value="Slet Ordre" onclick="return confirm('Vil du slette denne ordre?')">   
         </form>
             
-        <a href="FrontController?command=vieworders">back</a> 
+        <a href="FrontController?command=vieworders">Tilbage</a> 
     </body>
 </html>

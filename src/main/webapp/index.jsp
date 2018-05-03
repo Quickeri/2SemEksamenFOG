@@ -13,11 +13,10 @@
     </head>
     <body>
         <%@include file="/includes/fogmenu.jsp" %>
-        <h1>Welcome Fog Carport</h1>
-        <p>logged in as: <%=session.getAttribute("email")%>.</p>
+        <h1>Velkommen til Fog Carport</h1>
         
         <table>
-            <tr><td>Login</td>
+            <tr><td>Log Ind</td>
                 <td>
                     <form name="login" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="login">
@@ -27,10 +26,10 @@
                         Password:<br>
                         <input type="password" name="password" value="1234">
                         <br>
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Log Ind">
                     </form>
                 </td>
-                <td>Or Register</td>
+                <td>Eller Registrer</td>
                 <td>
                     <form name="register" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="register">
@@ -43,7 +42,7 @@
                         Retype Password:<br>
                         <input type="password" name="password2" value="sesam">
                         <br>
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Opret Bruger">
                     </form>
                 </td>
             </tr>

@@ -17,36 +17,36 @@
         <%@include file="../includes/fogmenu.jsp" %>
     
         <% List<Order> orders = (ArrayList<Order>) request.getAttribute("list");%>
-        <h1>View Orders</h1>
+        <h1>Se Ordre</h1>
 
         <form action="FrontController" method="post" id="formSearch">
             <input type="hidden" name="command" value="searchorder">
             <input type="number" name="orderid" placeholder="orderid" required>
-            <input type="submit" value="Search Order">
+            <input type="submit" value="Søg Ordre">
         </form>
         
         <div id="orderTable">   
             <table class="table">
                 <tr>
                     <th>Order ID</th>
-                    <th>Customer name</th>
-                    <th>Customer email</th>
-                    <th>Length</th>
-                    <th>Width</th>
-                    <th>Height</th>
-                    <th>Customer ID</th>
+                    <th>Kunde ID</th>
+                    <th>Navn</th>
+                    <th>Email</th>
+                    <th>Længde</th>
+                    <th>Bredde</th>
+                    <th>Højde</th>             
                 </tr>
 
                 <%
                      for (Order o : orders) {%>
                 <tr>
                     <td> <%= o.getOrderid()%> </td>  
+                    <td> <%= o.getCustomerid()%> </td>
                     <td> <%= o.getName()%> </td>  
                     <td> <a href="mailto:<%= o.getEmail()%>"> <%= o.getEmail()%> </a> </td>   
-                    <td> <%= o.getLength()%> </td>
-                    <td> <%= o.getWidth()%> </td>  
-                    <td> <%= o.getHeight()%> </td>                                   
-                    <td> <%= o.getCustomerid()%> </td>
+                    <td> <%= o.getLength()%>cm </td>
+                    <td> <%= o.getWidth()%>cm </td>  
+                    <td> <%= o.getHeight()%>cm </td>                                                    
                 </tr> 
                 <% }%>
             </table>              

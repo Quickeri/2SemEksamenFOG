@@ -14,18 +14,18 @@
     <body>
         <%@include file="../includes/fogmenu.jsp" %>
  
-        <h1>Update User</h1>
+        <h1>Opdater Bruger</h1>
         
         <form name="updateuser" action="FrontController" method="POST">
             <input type="hidden" name="command" value="updateuser">
             <input type="hidden" name="userid" value="<%=session.getAttribute("id")%>">
             Email:<br>
-            <input type="text" name="email" value="<%=session.getAttribute("email")%>">
+            <input type="text" name="email" value="<%=session.getAttribute("email")%>" required>
             <br>
             Password:<br>
-            <input type="password" name="password">
+            <input type="password" name="password" required>
             <br>  
-            <input type="submit" value="Update User">   
+            <input type="submit" value="Opdater Bruger">   
         </form>
             
     </body>

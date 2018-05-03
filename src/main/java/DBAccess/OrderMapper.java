@@ -144,12 +144,12 @@ public class OrderMapper {
                 int orderid = rs.getInt("orderid");
                 String name = rs.getString("name");
                 String email = rs.getString("email");
+                int customerid = rs.getInt("customerid");
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
                 int height = rs.getInt("height");
-                int customerid = rs.getInt("customerid");
 
-                Order o = new Order(orderid, name, email, length, width, height, customerid);
+                Order o = new Order(orderid, name, email, customerid, length, width, height);
 
                 orders.add(o);
             }
