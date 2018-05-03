@@ -29,7 +29,7 @@ public class UpdateUser extends Command{
         
         LogicFacade.updateUser(user);
         
-        return "employeepage";
+        return user.getRole() + "page";
     }
     
 }
