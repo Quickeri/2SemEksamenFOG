@@ -62,7 +62,7 @@ public class UserMapper {
     public static void updateUser (User user) throws LoginSampleException{
         try {
             Connection con = Connector.connection();
-            String SQL = "UPDATE users SET email = ?, password = ? WHERE id = ?";
+            String SQL = "UPDATE customer SET email = ?, password = ? WHERE customerid = ?";
             PreparedStatement ps = con.prepareStatement( SQL );
             
             ps.setString(1, user.getEmail());

@@ -8,6 +8,7 @@ package PresentationLayer;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
+import FunctionLayer.Stykliste;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,7 @@ public class SearchOrder extends Command {
         int orderid = Integer.parseInt(request.getParameter( "orderid" ));
         if (LogicFacade.getOrder(orderid) != null){
             Order order = LogicFacade.getOrder(orderid);
+//            Stykliste stykliste = LogicFacade.makeStykliste(order);
             request.setAttribute("order", order);
             return "viewsingleorder";
         }
