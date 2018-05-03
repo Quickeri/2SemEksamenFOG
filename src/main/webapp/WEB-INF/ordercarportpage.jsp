@@ -15,9 +15,9 @@
     <body>
         <%@include file="../includes/fogmenu.jsp" %>
         <h1>Byg-selv carport</h1>
-        <p onclick="carportType1()">Carport Type 1</p>
-        <p onclick="carportType2()">Carport Type 2</p>
-        <p onclick="carportType3()">Carport Type 3</p>
+        <p onclick="carportType1()">Carport Type 1: click på denne carport for at få en carport med målene 600cm x 300cm x 250cm.</p>
+        <p onclick="carportType2()">Carport Type 2: click på denne carport for at få en carport med målene 700cm x 400cm x 250cm.</p>
+        <p onclick="carportType3()">Carport Type 3: click på denne carport for at få en carport med målene 500cm x 300cm x 250cm.</p>
         <script>
             function carportType1() {
                 document.getElementById("length").value = "600";
