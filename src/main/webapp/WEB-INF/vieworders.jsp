@@ -53,6 +53,5 @@
                 <% }%>
             </table>              
         </div>
-        <a href="FrontController?command=viewsingleorder">view single order</a> 
     </body>
 </html>
