@@ -4,6 +4,7 @@
     Author     : Jesper Outzen
 --%>
 
+<%@page import="FunctionLayer.Stykliste"%>
 <%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,6 +16,7 @@
     <body>
         <%@include file="../includes/fogmenu.jsp" %>
         <% Order o = (Order) request.getAttribute("order"); %>
+        <% Stykliste s = (Stykliste) request.getAttribute("stykliste"); %>
         <h1>View single order!</h1>
         <div id="orderTable">   
             <table class="table">
@@ -34,7 +36,21 @@
                 </tr> 
             </table>              
         </div>
-        
+        <h1>Stykliste</h1>
+        <div id="styklisteTable">   
+            <table class="table">
+                <tr>
+                    <th>Stolper</th>
+                    <th>Spær</th>
+                    <th>Søm</th>
+                </tr>   
+                <tr>
+                    <td> <%= s.getStolper() %> </td>  
+                    <td> 0 </td>  
+                    <td> 0 </td>                                
+                </tr> 
+            </table>              
+        </div>
         <form name="updateorder" action="FrontController" method="POST">
             <input type="hidden" name="command" value="updateorder">
             <input type="hidden" name="orderid" value="<%= o.getOrderid() %>">

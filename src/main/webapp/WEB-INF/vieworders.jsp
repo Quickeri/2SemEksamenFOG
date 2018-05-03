@@ -42,7 +42,7 @@
                 <tr>
                     <td> <%= o.getOrderid()%> </td>  
                     <td> <%= o.getName()%> </td>  
-                    <td> <%= o.getEmail()%> </td>   
+                    <td> <a href="mailto:<%= o.getEmail()%>"> <%= o.getEmail()%> </a> </td>   
                     <td> <%= o.getLength()%> </td>
                     <td> <%= o.getWidth()%> </td>  
                     <td> <%= o.getHeight()%> </td>                                   

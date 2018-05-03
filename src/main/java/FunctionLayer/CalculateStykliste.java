@@ -14,7 +14,7 @@ package FunctionLayer;
 public class CalculateStykliste {
     
     public Stykliste makeStykliste(Order o){
-        int stolper = (o.getLength()/100) + (o.getWidth()/100);
+        int stolper = (o.getLength()/100 * 2) + (o.getWidth()/100);
         Stykliste stykliste = new Stykliste(stolper);
         
         return stykliste;
