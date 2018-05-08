@@ -64,8 +64,8 @@
         <td>    
             <h4> Carporten set ovenfra</h4>
 
-            <SVG width="<%= order.getWidth() + 200%>" height="<%= order.getLength() + 200%>">
-            <rect x="0" y="0" height="<%= order.getLength()%>" width="<%= order.getWidth()%>"
+            <SVG width="<%= order.getWidth() + 300%>" height="<%= order.getLength() + 300%>">
+            <rect x="0" y="<%= draw.sideRemnant(order,"roof") %>" height="<%= order.getLength()%>" width="<%= order.getWidth()%>"
                   style="stroke:#000000; stroke-width: 4; fill: #F5F5DC"/>
             <%= draw.carport(order, "roof") %>
             </SVG>
@@ -73,8 +73,8 @@
         <td>
             <h4> Carporten set forfra</h4>
 
-            <SVG width="<%= order.getWidth() + 200%>" height="<%= order.getHeight() + 200%>">
-            <rect x="0" y="0" height="<%= order.getHeight()%>" width="<%= order.getWidth()%>"
+            <SVG width="<%= order.getWidth() + 300%>" height="<%= order.getHeight() + 300%>">
+            <rect x="<%= draw.sideRemnant(order,"front") %>" y="0" height="<%= order.getHeight()%>" width="<%= order.getWidth()%>"
                   style="stroke:#000000; stroke-width: 4; fill: #F5F5DC"/>
             <%= draw.carport(order, "front") %>
             </SVG>
@@ -82,17 +82,17 @@
         <td>
             <h4> Carporten set fra siden</h4>
 
-            <SVG width="<%= order.getLength() + 200%>" height="<%= order.getHeight() + 200%>">
-            <rect x="0" y="0" height="<%= order.getHeight()%>" width="<%= order.getLength()%>"
+            <SVG width="<%= order.getLength() + 300%>" height="<%= order.getHeight() + 300%>">
+            <rect x="<%=draw.sideRemnant(order, "side")%>" y="0" height="<%= order.getHeight()%>" width="<%= order.getLength()%>"
                   style="stroke:#000000; stroke-width: 4; fill: #F5F5DC"/>
             <%= draw.carport(order, "side") %>
             </SVG>
         </td>
     </tr>    
         </table>
-            <p> antal spær til tag <%= draw.getPartQuantity("roof")%></p>
-            <p> antal stolper til front <%= draw.getPartQuantity("front")%></p>
-            <p> antal stolper til side <%= draw.getPartQuantity("side")%></p>
+            <p> antal spær til tag: <%= draw.getPartQuantity("roof")%></p>
+            <p> antal stolper til front: <%= draw.getPartQuantity("front")%></p>
+            <p> antal stolper til side: <%= draw.getPartQuantity("side")%></p>
             <p> Bemærk at bagside side og front i alt deler 4 stolper, disse tal indikerer kun, hvor mange stopler/spær der er på hver tegning</p>
         <% }%>
 
