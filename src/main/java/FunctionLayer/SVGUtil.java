@@ -34,21 +34,21 @@ public class SVGUtil {
         switch(side){
         
         case "roof":
-        for (int i = 0; i < order.getLength()/(distanceRoof + standardWidth); i++){
+        for (int i = 0; i < 1 + order.getLength()/distanceRoof; i++){
         sb.append(carportPart(side, width, standardWidth, 0, length));
         length -= distanceRoof;
         }
         break;
         
         case "front":
-        for (int i = 0; i < order.getWidth()/(distanceFront+standardWidth); i++){
+        for (int i = 0; i < 1 + order.getWidth()/distanceFront; i++){
         sb.append(carportPart(side, height, standardWidth, width, 0));
         width -= distanceFront;
         }
         break;
         
         case "side":
-        for (int i = 0; i < order.getLength()/(distanceSide + standardWidth); i++){
+        for (int i = 0; i < 1 + order.getLength()/distanceSide; i++){
         sb.append(carportPart(side, height, standardWidth, length, 0));
         length-= distanceSide;
         }
