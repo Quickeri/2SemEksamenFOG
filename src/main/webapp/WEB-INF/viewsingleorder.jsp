@@ -4,7 +4,9 @@
     Author     : Jesper Outzen
 --%>
 
-<%@page import="FunctionLayer.Stykliste"%>
+<%@page import="FunctionLayer.Item"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,7 +18,7 @@
     <body>
         <%@include file="../includes/fogmenu.jsp" %>
         <% Order o = (Order) request.getAttribute("order"); %>
-        <% Stykliste s = (Stykliste) request.getAttribute("stykliste"); %>
+        <% List<Item> stykliste = (ArrayList<Item>) request.getAttribute("stykliste"); %>
         <h1>Se Ordre</h1>
         <div id="orderTable">   
             <table class="table">
@@ -42,15 +44,21 @@
         <div id="styklisteTable">   
             <table class="table">
                 <tr>
-                    <th>Stolper</th>
-                    <th>Spær</th>
-                    <th>Søm</th>
-                </tr>   
+                    <th>Navn</th>
+                    <th>Længde</th>
+                    <th>Antal</th>
+                    <th>Enhed</th>
+                    <th>Beskrivelse</th>
+                </tr>  
+                <% for (Item s : stykliste) {%>
                 <tr>
-                    <td> <%= s.getStolper() %> </td>  
-                    <td> <%= s.getSpær() %> </td>  
-                    <td> 0 </td>                                
+                    <td> <%= s.getName() %>  </td>   
+                    <td> <%= s.getLength() %> </td>  
+                    <td> <%= s.getAmount() %> </td>  
+                    <td> <%= s.getUnit() %>  </td>  
+                    <td> <%= s.getDescription() %> </td>   
                 </tr> 
+                <% }%>
             </table>              
         </div>
                     
