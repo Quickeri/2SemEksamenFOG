@@ -4,6 +4,7 @@
     Author     : alber
 --%>
 
+<%@page import="FunctionLayer.SVGUtil"%>
 <%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -56,6 +57,7 @@
         </form>
         <% if (request.getAttribute("order") != null) {
                 Order order = (Order) request.getAttribute("order");
+                SVGUtil draw = new SVGUtil();
         %>
         <table>
     <tr>
@@ -63,29 +65,32 @@
             <h4> Carporten set ovenfra</h4>
 
             <SVG width="<%= order.getWidth() + 200%>" height="<%= order.getLength() + 200%>">
-            <rect x="100" y="10" height="<%= order.getLength()%>" width="<%= order.getWidth()%>"
-                  style="stroke:#000000; stroke-width: 4; fill: #F5F5DC"/>
+            <%= draw.carport(order, "roof") %>
             </SVG>
         </td>
         <td>
             <h4> Carporten set forfra</h4>
 
             <SVG width="<%= order.getWidth() + 200%>" height="<%= order.getHeight() + 200%>">
-            <rect x="100" y="10" height="<%= order.getHeight()%>" width="<%= order.getWidth()%>"
-                  style="stroke:#000000; stroke-width: 4; fill: #F5F5DC"/>
+            <%= draw.carport(order, "front") %>
             </SVG>
         </td>
         <td>
             <h4> Carporten set fra siden</h4>
 
             <SVG width="<%= order.getLength() + 200%>" height="<%= order.getHeight() + 200%>">
-            <rect x="100" y="10" height="<%= order.getHeight()%>" width="<%= order.getLength()%>"
-                  style="stroke:#000000; stroke-width: 4; fill: #F5F5DC"/>
+            <%= draw.carport(order, "side") %>
             </SVG>
         </td>
     </tr>    
         </table>
 
+            <rect x="100" y="10" height="<%= order.getLength()%>" width="<%= order.getWidth()%>"
+                  style="stroke:#000000; stroke-width: 4; fill: #F5F5DC"/>
+            <rect x="100" y="10" height="<%= order.getHeight()%>" width="<%= order.getWidth()%>"
+                  style="stroke:#000000; stroke-width: 4; fill: #F5F5DC"/>
+            <rect x="100" y="10" height="<%= order.getHeight()%>" width="<%= order.getLength()%>"
+                  style="stroke:#000000; stroke-width: 4; fill: #F5F5DC"/>
         <% }%>
 
     </body>
