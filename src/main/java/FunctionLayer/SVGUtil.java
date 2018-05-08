@@ -103,15 +103,16 @@ public class SVGUtil {
 
     public int sideRemnant(Order order, String side) {
         int remnant = 0;
+        int remnantSW = standardWidth/2;
         switch (side) {
             case "roof":
-                remnant = (order.getLength() % distanceRoof)/2;
+                remnant = remnantSW + (order.getLength() % distanceRoof)/2;
                 break;
             case "front":
-                remnant = (order.getWidth() % distanceFront)/2;
+                remnant = remnantSW + (order.getWidth() % distanceFront)/2;
                 break;
             case "side":
-                remnant = (order.getLength() % distanceSide)/2;
+                remnant = remnantSW + (order.getLength() % distanceSide)/2;
                 break;
         }
         return remnant;
