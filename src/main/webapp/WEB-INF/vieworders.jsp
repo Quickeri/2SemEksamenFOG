@@ -34,7 +34,8 @@
                     <th>Email</th>
                     <th>Længde</th>
                     <th>Bredde</th>
-                    <th>Højde</th>             
+                    <th>Højde</th>       
+                    <th>Dato</th>   
                 </tr>
 
                 <%
@@ -46,7 +47,8 @@
                     <td> <a href="mailto:<%= o.getEmail()%>"> <%= o.getEmail()%> </a> </td>   
                     <td> <%= o.getLength()%>cm </td>
                     <td> <%= o.getWidth()%>cm </td>  
-                    <td> <%= o.getHeight()%>cm </td>                                                    
+                    <td> <%= o.getHeight()%>cm </td>     
+                    <td> <%= o.getDate()%> </td>  
                 </tr> 
                 <% }%>
             </table>              

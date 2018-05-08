@@ -31,7 +31,11 @@ public class CreateOrder extends Command {
         int width = Integer.parseInt(request.getParameter("width"));
         int height = Integer.parseInt(request.getParameter("height"));
         
-        Order order = LogicFacade.createOrder(customerId, length, width, height);
+        java.util.Date dt = new java.util.Date();
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(dt);
+        
+        Order order = LogicFacade.createOrder(customerId, length, width, height, date);
         
         request.setAttribute("order", order);
         

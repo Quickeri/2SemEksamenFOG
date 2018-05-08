@@ -26,13 +26,15 @@
                     <th>Længde</th>
                     <th>Bredde</th>
                     <th>Højde</th>
+                    <th>Dato</th>
                 </tr>   
                 <tr>
                     <td> <%= o.getOrderid() %> </td>  
                     <td> <%= o.getCustomerid() %> </td>  
                     <td> <%= o.getLength() %>cm </td>
                     <td> <%= o.getWidth() %>cm </td>  
-                    <td> <%= o.getHeight() %>cm </td>                                   
+                    <td> <%= o.getHeight() %>cm </td>
+                    <td> <%= o.getDate() %> </td>  
                 </tr> 
             </table>              
         </div>

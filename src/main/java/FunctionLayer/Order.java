@@ -13,8 +13,9 @@ public class Order {
     private int length;
     private int width;
     private int height;
+    private String date;
 
-    public Order(int orderid, String name, String email, int customerid, int length, int width, int height) {
+    public Order(int orderid, String name, String email, int customerid, int length, int width, int height, String date) {
         this.orderid = orderid;
         this.name = name;
         this.email = email;
@@ -22,23 +23,31 @@ public class Order {
         this.length = length;
         this.width = width;
         this.height = height;
+        this.date = date;
     }
 
     
+    public Order(int customerid, int length, int width, int height, String date) {
+        this.customerid = customerid;
+        this.length = length;
+        this.width = width;
+        this.height = height;
+        this.date = date;
+    }
     public Order(int customerid, int length, int width, int height) {
         this.customerid = customerid;
         this.length = length;
         this.width = width;
         this.height = height;
     }
-
     
-    public Order(int orderid, int customerid, int length, int width, int height) {
+    public Order(int orderid, int customerid, int length, int width, int height, String date) {
         this.orderid = orderid;
         this.customerid = customerid;
         this.length = length;
         this.width = width;
         this.height = height;
+        this.date = date;
     }
     
     public int getOrderid() {
@@ -71,6 +80,14 @@ public class Order {
 
     public int getHeight() {
         return height;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public void setOrderid(int orderid) {

@@ -15,13 +15,14 @@ public class OrderMapper {
         try {
             Connection con = Connector.connection();
             
-            String SQL = "INSERT INTO orders VALUES(null, ?, ?, ?, ?)";
+            String SQL = "INSERT INTO orders VALUES(null, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.prepareStatement( SQL );
             
             ps.setInt(1, o.getCustomerid());
             ps.setInt(2, o.getHeight());
             ps.setInt(3, o.getLength());
             ps.setInt(4, o.getWidth());
+            ps.setString(5, o.getDate());
             
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
@@ -90,8 +91,9 @@ public class OrderMapper {
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
                 int height = rs.getInt("height");
+                String date = rs.getString("date");
 
-                return new Order(orderid, customerid, length, width, height);
+                return new Order(orderid, customerid, length, width, height, date);
             }
         }
         catch (SQLException | ClassNotFoundException ex)
@@ -118,8 +120,9 @@ public class OrderMapper {
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
                 int height = rs.getInt("height");
+                String date = rs.getString("date");
 
-                Order o = new Order(orderid, customerid, length, width, height);
+                Order o = new Order(orderid, customerid, length, width, height, date);
 
                 orders.add(o);
             }
@@ -135,7 +138,7 @@ public class OrderMapper {
         try{
         Connection con = Connector.connection();
             
-        String SQL = "select orders.orderid, customer.name, customer.email, orders.Height, orders.Length, orders.Width, orders.customerid from customer inner join orders on customer.customerid = orders.customerid";
+        String SQL = "select orders.orderid, customer.name, customer.email, orders.Height, orders.Length, orders.Width, orders.date, orders.customerid from customer inner join orders on customer.customerid = orders.customerid";
         PreparedStatement ps = con.prepareStatement( SQL );
         ResultSet rs = ps.executeQuery();
             
@@ -148,8 +151,9 @@ public class OrderMapper {
                 int length = rs.getInt("length");
                 int width = rs.getInt("width");
                 int height = rs.getInt("height");
+                String date = rs.getString("date");
 
-                Order o = new Order(orderid, name, email, customerid, length, width, height);
+                Order o = new Order(orderid, name, email, customerid, length, width, height, date);
 
                 orders.add(o);
             }

@@ -23,8 +23,8 @@ public class LogicFacade {
         UserMapper.updateUser( user );
         return user;
     }
-    public static Order createOrder( int customerid, int length, int width, int height ) throws LoginSampleException {
-        Order order = new Order( customerid, length, width, height );
+    public static Order createOrder( int customerid, int length, int width, int height, String date ) throws LoginSampleException {
+        Order order = new Order( customerid, length, width, height, date );
         OrderMapper.createOrder( order );
         return order;
     }

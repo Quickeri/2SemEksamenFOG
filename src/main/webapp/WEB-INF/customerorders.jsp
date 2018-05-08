@@ -23,6 +23,7 @@
                     <th>Højde</th>
                     <th>Længde</th>
                     <th>Bredde</th>
+                    <th>Dato</th>
                 </tr>
                 
                  <%
@@ -33,6 +34,7 @@
                     <td> <%= o.getHeight() %>cm </td>
                     <td> <%= o.getLength() %>cm </td>
                     <td> <%= o.getWidth() %>cm </td>
+                    <td> <%= o.getDate() %> </td>
                     
                 </tr> 
                 <% } %>

@@ -69,7 +69,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Jesper Jespersen','1234','kunde@somewhere.com','customer'),(2,'Mads Madsen','1234','admin@nowhere.com','employee');
+INSERT INTO `customer` VALUES (1,'Jesper Jespersen','1234','kunde@somewhere.com','customer'),(2,'Mads Madsen','1234','admin@somewhere.com','employee');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,11 +86,12 @@ CREATE TABLE `orders` (
   `Height` int(11) NOT NULL,
   `Length` int(11) NOT NULL,
   `Width` int(11) NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`orderid`),
   UNIQUE KEY `orderid_UNIQUE` (`orderid`),
   KEY `customerid_idx` (`customerid`),
   CONSTRAINT `customerid` FOREIGN KEY (`customerid`) REFERENCES `customer` (`customerid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +100,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,1,2,6,3),(2,2,2,7,4),(4,1,700,500,600),(5,1,250,600,300),(6,1,250,600,300);
+INSERT INTO `orders` VALUES (12,1,250,500,300,'2018-05-08');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,4 +140,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-03  9:36:56
+-- Dump completed on 2018-05-08 10:23:33
