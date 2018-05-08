@@ -5,6 +5,8 @@
  */
 package FunctionLayer;
 
+import java.util.ArrayList;
+
 
 
 /**
@@ -13,11 +15,11 @@ package FunctionLayer;
  */
 public class CalculateStykliste {
     
-    public Stykliste makeStykliste(Order o){
-        int stolper = (o.getLength()/100 * 2) + (o.getWidth()/100);
-        int spær = o.getLength()/100;
-        Stykliste stykliste = new Stykliste(stolper, spær);
-        
+    public ArrayList<Item> makeStykliste(Order o){
+        ArrayList<Item> stykliste = new ArrayList();
+        int antalStolper = (o.getLength()/200 * 2) + (o.getWidth()/200);   
+        stykliste.add(new Item("97x97 mm. trykimp. Stolpe", o.getHeight()+90, antalStolper, "stk", "Stolper nedgraves 90cm i jord"));
+        stykliste.add(new Item("45x195 mm. Spær", o.getWidth(), o.getLength()/100, "stk", "Monteres på rem"));
         return stykliste;
     }
 }
