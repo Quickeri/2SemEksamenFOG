@@ -90,7 +90,10 @@
         </td>
     </tr>    
         </table>
-
+            <p> antal spær til tag <%= draw.getPartQuantity("roof")%></p>
+            <p> antal stolper til front <%= draw.getPartQuantity("front")%></p>
+            <p> antal stolper til side <%= draw.getPartQuantity("side")%></p>
+            <p> Bemærk at bagside side og front i alt deler 4 stolper, disse tal indikerer kun, hvor mange stopler/spær der er på hver tegning</p>
         <% }%>
 
     </body>
