@@ -30,6 +30,7 @@ public class SearchOrder extends Command {
         else {
             ArrayList<Order> orders = LogicFacade.getAllOrders();
             request.setAttribute("list", orders);
+            request.setAttribute("searchError", "Order not found");
             return "vieworders";
         }
     }

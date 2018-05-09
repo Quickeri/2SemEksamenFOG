@@ -24,7 +24,7 @@
             <input type="number" name="orderid" placeholder="orderid" required>
             <input type="submit" value="Søg Ordre">
         </form>
-        
+        ${searchError}
         <div id="orderTable">   
             <table class="table">
                 <tr>
@@ -38,10 +38,9 @@
                     <th>Dato</th>   
                 </tr>
 
-                <%
-                     for (Order o : orders) {%>
+                <% for (Order o : orders) {%>
                 <tr>
-                    <td> <%= o.getOrderid()%> </td>  
+                    <td> <a href="FrontController?command=searchorder&orderid=<%= o.getOrderid()%>"> <%= o.getOrderid()%> </a> </td>  
                     <td> <%= o.getCustomerid()%> </td>
                     <td> <%= o.getName()%> </td>  
                     <td> <a href="mailto:<%= o.getEmail()%>"> <%= o.getEmail()%> </a> </td>   

@@ -37,12 +37,12 @@ public class OrderMapper {
         {
         Connection con = Connector.connection();
         
-        String SQL = "UPDATE orders SET length = ?, width = ?, height = ?, WHERE orderid = ?";
+        String SQL = "UPDATE orders SET height = ?, length = ?, width = ? WHERE orderid = ?";
             PreparedStatement ps = con.prepareStatement( SQL );
             
-            ps.setInt(1, o.getLength());
-            ps.setInt(2, o.getWidth());
-            ps.setInt(3, o.getHeight());
+            ps.setInt(1, o.getHeight());
+            ps.setInt(2, o.getLength());
+            ps.setInt(3, o.getWidth());
             ps.setInt(4, o.getOrderid());
             ps.executeUpdate();
             

@@ -24,7 +24,12 @@ public class Item {
         this.unit = unit;
         this.description = description;
     }
-
+    public Item(String name, int amount, String unit, String description) {
+        this.name = name;
+        this.amount = amount;
+        this.unit = unit;
+        this.description = description;
+    }
     public String getName() {
         return name;
     }

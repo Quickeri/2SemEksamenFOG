@@ -12,7 +12,7 @@
     }
     .topMenu{
         overflow: hidden;
-        background-color: darkgray;
+        background-color: #15317b;
     }
     .topMenu a {
         float: left;
@@ -21,10 +21,11 @@
         text-align: center;
         padding: 20px 20px;
         text-decoration: none;
+        transition-duration: 0.3s;
     }
     .topMenu a:hover{
-        background-color: #555;
-        color: darkgray;
+        background-color: #0b1c5c;
+        color: #4c77b1;
     }
     .button {
         float: left;
@@ -44,7 +45,7 @@
     <a href="FrontController?command=rolepage" class="navbar-left"><img src="https://d3ikkoqs9ddhdl.cloudfront.net/img/logo/pageflip/6d77Ug_6fhnjpi14.png"></a>
     <a href="FrontController?command=vieworders" class="button">Kundeordrer</a>
     <a href="FrontController?command=gotoupdateuser" class="button">Opdater Bruger</a>
-    <a href="FrontController?command=logout"> <span class="glyphicon glyphicon-log-out" name="icon"> </span> Log ud</button></a>
+    <a href="FrontController?command=logout"> <span class="glyphicon glyphicon-log-out" name="icon"> </span> Log ud</a>
     
 </div>
 <%}else{%>
@@ -53,7 +54,7 @@
     <a href="FrontController?command=gotoupdateuser" class="button">Opdater Bruger</a>
     <a href="FrontController?command=ordercarportpage" class="button">Bestil Carport</a>
     <a href="FrontController?command=customerorders" class="button">Se dine bestilte carporte</a>
-    <a href="FrontController?command=logout"> <span class="glyphicon glyphicon-log-out" name ="icon"> </span> Log ud</button></a>
+    <a href="FrontController?command=logout"> <span class="glyphicon glyphicon-log-out" name ="icon"> </span> Log ud</a>
 
 </div>
 <%}%>

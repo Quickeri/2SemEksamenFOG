@@ -34,8 +34,8 @@ public class Order {
         this.height = height;
         this.date = date;
     }
-    public Order(int customerid, int length, int width, int height) {
-        this.customerid = customerid;
+    public Order(int orderid, int length, int width, int height) {
+        this.orderid = orderid;
         this.length = length;
         this.width = width;
         this.height = height;
