@@ -5,17 +5,29 @@
  */
 package FunctionLayer;
 
+import java.util.Comparator;
+
 /**
  *
  * @author Mads
  */
 public class Item {
-   
+    
+    private int itemid;
     private String name;
     private int length;
     private int amount;
     private String unit;
     private String description;
+    private int price;
+
+    public Item(int itemid, String name, String unit, int price, String description) {
+        this.itemid = itemid;
+        this.name = name;
+        this.unit = unit;
+        this.price = price;
+        this.description = description;
+    }
 
     public Item(String name, int length, int amount, String unit, String description) {
         this.name = name;
@@ -30,6 +42,7 @@ public class Item {
         this.unit = unit;
         this.description = description;
     }
+    
     public String getName() {
         return name;
     }
@@ -68,6 +81,22 @@ public class Item {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getItemid() {
+        return itemid;
+    }
+
+    public void setItemid(int itemid) {
+        this.itemid = itemid;
     }
 
     

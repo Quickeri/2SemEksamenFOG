@@ -28,7 +28,12 @@ public class SearchOrder extends Command {
             return "viewsingleorder";
         }
         else {
-            ArrayList<Order> orders = LogicFacade.getAllOrders();
+            ArrayList<Order> orders = LogicFacade.getAllOrdersByOrderid(1);
+            int count = LogicFacade.countOrders();
+            int totalPages = count / 10;
+            request.setAttribute("totalpages", totalPages);
+            request.setAttribute("count", count);
+            request.setAttribute("page", 1);
             request.setAttribute("list", orders);
             request.setAttribute("searchError", "Order not found");
             return "vieworders";

@@ -102,7 +102,26 @@ public class OrderMapper {
         }
         return null;
     }
-    
+    // Returns the amount of orders in database
+    public static int countOrders() throws LoginSampleException {
+        int count = 0;
+        try {
+        Connection con = Connector.connection();
+            
+        String SQL = "SELECT COUNT(orderid) FROM orders";
+        PreparedStatement ps = con.prepareStatement( SQL );
+        
+        ResultSet rs = ps.executeQuery();
+            
+            while (rs.next())
+            {
+                count = rs.getInt("count(orderid)");
+            }
+        }catch(SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return count;
+    }
     // Returns an arraylist of orders from a customer
     public static ArrayList<Order> getOrders(int customerid) throws LoginSampleException{
         ArrayList<Order> orders = new ArrayList();
@@ -133,13 +152,115 @@ public class OrderMapper {
     }
     
     // Returns an arraylist of all orders
-    public static ArrayList<Order> getAllOrders() throws LoginSampleException{
+    public static ArrayList<Order> getAllOrdersByOrderid(int page) throws LoginSampleException{
         ArrayList<Order> orders = new ArrayList();
         try{
         Connection con = Connector.connection();
             
-        String SQL = "select orders.orderid, customer.name, customer.email, orders.Height, orders.Length, orders.Width, orders.date, orders.customerid from customer inner join orders on customer.customerid = orders.customerid";
+        String SQL = "select orders.orderid, customer.name, customer.email, orders.Height, "
+                + "orders.Length, orders.Width, orders.date, orders.customerid from customer "
+                + "inner join orders on customer.customerid = orders.customerid ORDER BY orderid LIMIT ?, 10";
         PreparedStatement ps = con.prepareStatement( SQL );
+        ps.setInt(1, (page - 1) * 10);
+        ResultSet rs = ps.executeQuery();
+            
+            while (rs.next())
+            {
+                int orderid = rs.getInt("orderid");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                int customerid = rs.getInt("customerid");
+                int length = rs.getInt("length");
+                int width = rs.getInt("width");
+                int height = rs.getInt("height");
+                String date = rs.getString("date");
+
+                Order o = new Order(orderid, name, email, customerid, length, width, height, date);
+
+                orders.add(o);
+            }
+        }catch(SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return orders;
+    }
+    // Returns an arraylist of all orders
+    public static ArrayList<Order> getAllOrdersByCustomerid(int page) throws LoginSampleException{
+        ArrayList<Order> orders = new ArrayList();
+        try{
+        Connection con = Connector.connection();
+            
+        String SQL = "select orders.orderid, customer.name, customer.email, orders.Height, "
+                + "orders.Length, orders.Width, orders.date, orders.customerid from customer "
+                + "inner join orders on customer.customerid = orders.customerid ORDER BY customerid LIMIT ?, 10";
+        PreparedStatement ps = con.prepareStatement( SQL );
+        ps.setInt(1, (page - 1) * 10);
+        ResultSet rs = ps.executeQuery();
+            
+            while (rs.next())
+            {
+                int orderid = rs.getInt("orderid");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                int customerid = rs.getInt("customerid");
+                int length = rs.getInt("length");
+                int width = rs.getInt("width");
+                int height = rs.getInt("height");
+                String date = rs.getString("date");
+
+                Order o = new Order(orderid, name, email, customerid, length, width, height, date);
+
+                orders.add(o);
+            }
+        }catch(SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return orders;
+    }
+    // Returns an arraylist of all orders
+    public static ArrayList<Order> getAllOrdersByName(int page) throws LoginSampleException{
+        ArrayList<Order> orders = new ArrayList();
+        try{
+        Connection con = Connector.connection();
+            
+        String SQL = "select orders.orderid, customer.name, customer.email, orders.Height, "
+                + "orders.Length, orders.Width, orders.date, orders.customerid from customer "
+                + "inner join orders on customer.customerid = orders.customerid ORDER BY name LIMIT ?, 10";
+        PreparedStatement ps = con.prepareStatement( SQL );
+        ps.setInt(1, (page - 1) * 10);
+        ResultSet rs = ps.executeQuery();
+            
+            while (rs.next())
+            {
+                int orderid = rs.getInt("orderid");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                int customerid = rs.getInt("customerid");
+                int length = rs.getInt("length");
+                int width = rs.getInt("width");
+                int height = rs.getInt("height");
+                String date = rs.getString("date");
+
+                Order o = new Order(orderid, name, email, customerid, length, width, height, date);
+
+                orders.add(o);
+            }
+        }catch(SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return orders;
+    }
+    // Returns an arraylist of all orders
+    public static ArrayList<Order> getAllOrdersByDate(int page) throws LoginSampleException{
+        ArrayList<Order> orders = new ArrayList();
+        try{
+        Connection con = Connector.connection();
+            
+        String SQL = "select orders.orderid, customer.name, customer.email, orders.Height, "
+                + "orders.Length, orders.Width, orders.date, orders.customerid from customer "
+                + "inner join orders on customer.customerid = orders.customerid ORDER BY date LIMIT ?, 10";
+        PreparedStatement ps = con.prepareStatement( SQL );
+        ps.setInt(1, (page - 1) * 10);
         ResultSet rs = ps.executeQuery();
             
             while (rs.next())

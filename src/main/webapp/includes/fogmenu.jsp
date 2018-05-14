@@ -43,7 +43,8 @@
 <%}else if(session.getAttribute("role").equals("employee")){%>
     <div class="topMenu">
     <a href="FrontController?command=rolepage" class="navbar-left"><img src="https://d3ikkoqs9ddhdl.cloudfront.net/img/logo/pageflip/6d77Ug_6fhnjpi14.png"></a>
-    <a href="FrontController?command=vieworders" class="button">Kundeordrer</a>
+    <a href="FrontController?command=vieworders&page=1&orderby=orderid" class="button">Kundeordrer</a>
+    <a href="FrontController?command=viewitems" class="button">Se Lager</a>
     <a href="FrontController?command=gotoupdateuser" class="button">Opdater Bruger</a>
     <a href="FrontController?command=logout"> <span class="glyphicon glyphicon-log-out" name="icon"> </span> Log ud</a>
     

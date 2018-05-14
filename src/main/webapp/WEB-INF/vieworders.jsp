@@ -13,29 +13,44 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View Orders</title>
+       <!-- <script> $(document).ready(function(){document.getElementById("previous").style.visibillity = "hidden";}); </script> -->
     </head>
-        <%@include file="../includes/fogmenu.jsp" %>
-    
+    <body>
+        <%@include file="../includes/employeemenu.jsp" %>
+        
         <% List<Order> orders = (ArrayList<Order>) request.getAttribute("list");%>
-        <h1>Se Ordre</h1>
-
+        <% int totalPages = (int) request.getAttribute("totalpages");%>
+        <% int count = (int) request.getAttribute("count");%>
+        <% int currentPage = (int) request.getAttribute("page");%>
+        <% String orderby = (String) request.getParameter("orderby");%>
+        
+        <div class="container">
+        <h2>Se Ordre</h2>
         <form action="FrontController" method="post" id="formSearch">
-            <input type="hidden" name="command" value="searchorder">
-            <input type="number" name="orderid" placeholder="orderid" required>
-            <input type="submit" value="Søg Ordre">
+                <input type="hidden" name="command" value="searchorder">
+            <div class="form-group">
+                <input type="number" name="orderid" class="form-control" placeholder="orderid" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span>Søg Ordre
+                </button>
+            </div>
         </form>
         ${searchError}
-        <div id="orderTable">   
+        </div>
+        
+        <div class="container">   
             <table class="table">
                 <tr>
-                    <th>Order ID</th>
-                    <th>Kunde ID</th>
-                    <th>Navn</th>
+                    <th><a href="FrontController?command=vieworders&page=<%=currentPage%>&orderby=orderid">Order ID</a></th>
+                    <th><a href="FrontController?command=vieworders&page=<%=currentPage%>&orderby=customerid">Kunde ID</a></th>
+                    <th><a href="FrontController?command=vieworders&page=<%=currentPage%>&orderby=name">Navn</a></th>
                     <th>Email</th>
                     <th>Længde</th>
                     <th>Bredde</th>
                     <th>Højde</th>       
-                    <th>Dato</th>   
+                    <th><a href="FrontController?command=vieworders&page=<%=currentPage%>&orderby=date">Dato</a></th>   
                 </tr>
 
                 <% for (Order o : orders) {%>
@@ -50,7 +65,20 @@
                     <td> <%= o.getDate()%> </td>  
                 </tr> 
                 <% }%>
-            </table>              
+            </table> 
+            Total orders: <%=count%>
+            Page: <%=currentPage%> / <%=totalPages%>
         </div>
+            
+        <div class="container">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="FrontController?command=vieworders&page=<%=currentPage - 1%>&orderby=<%=orderby%>">Previous</a>
+                <% for (int i = 1; i < totalPages + 1; i++) {%>
+                <li class="page-item"><a class="page-link" href="FrontController?command=vieworders&page=<%=i%>&orderby=<%=orderby%>"><%=i%></a>
+                <% }%>
+                <li class="page-item"><a class="page-link" href="FrontController?command=vieworders&page=<%=currentPage + 1%>&orderby=<%=orderby%>">Next</a> 
+            </ul>  
+        </div>
+          
     </body>
 </html>

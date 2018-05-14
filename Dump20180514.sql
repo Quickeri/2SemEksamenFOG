@@ -57,10 +57,10 @@ CREATE TABLE `customer` (
   `name` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `role` varchar(45) NOT NULL,
+  `role` varchar(45) NOT NULL DEFAULT 'customer',
   PRIMARY KEY (`customerid`),
   UNIQUE KEY `customerid_UNIQUE` (`customerid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,8 +69,63 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Jesper Jespersen','1234','kunde@somewhere.com','customer'),(2,'Mads Madsen','1234','admin@somewhere.com','employee');
+INSERT INTO `customer` VALUES (1,'Jesper Jespersen','1234','kunde@somewhere.com','customer'),(2,'Mads Madsen','1234','admin@somewhere.com','employee'),(3,'Henrik Henriksen','1234','henrik@somewhere.com','customer'),(4,'Casper Caspersen','1234','casper@somewhere.com','customer');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `itemlist`
+--
+
+DROP TABLE IF EXISTS `itemlist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `itemlist` (
+  `orderid` int(11) NOT NULL,
+  `itemid` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  KEY `orderid_idx` (`orderid`),
+  KEY `itemid_idx` (`itemid`),
+  CONSTRAINT `itemid` FOREIGN KEY (`itemid`) REFERENCES `items` (`itemid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `orderid` FOREIGN KEY (`orderid`) REFERENCES `orders` (`orderid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `itemlist`
+--
+
+LOCK TABLES `itemlist` WRITE;
+/*!40000 ALTER TABLE `itemlist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `itemlist` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `items`
+--
+
+DROP TABLE IF EXISTS `items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `items` (
+  `itemid` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `unit` varchar(45) NOT NULL,
+  `price` int(11) NOT NULL,
+  `description` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`itemid`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `items`
+--
+
+LOCK TABLES `items` WRITE;
+/*!40000 ALTER TABLE `items` DISABLE KEYS */;
+INSERT INTO `items` VALUES (1,'97x97mm. trykimp. Stolpe','stk',50,'Stolper nedgraves 90cm i jord'),(2,'25x200mm. trykimp. Brædt','stk',15,NULL),(3,'25x125mm. trykimp. Brædt','stk',10,NULL),(4,'38x73mm. Lægte ubh.','stk',10,NULL),(5,'45x195mm. spærtræ ubh.','stk',15,'Spær, monteres på rem'),(6,'19x100mm. trykimp. Brædt','stk',10,NULL),(7,'Plastmo Ecolite blåtonet','stk',40,'Tagplader monteres på spær'),(8,'Plastmo bundskruer 200stk','pakke',30,'Skruer til tagplader'),(9,'Hulbånd 1x20mm. 10meter','rulle',50,'Til vindkryds på spær'),(10,'Universalbeslag 190mm. højre','stk',15,'Til montering af spær på rem'),(11,'Universalbeslag 190mm. venstre','stk',15,'Til montering af spær på rem'),(12,'4,5x60mm. skruer 200stk','pakke',30,'Til montering af stern og vandbrædt'),(13,'4,0x50mm. beslagskruer 250stk','pakke',40,'Til montering af universalbeslag og hulbånd'),(14,'Bræddebolt 10x120mm.','stk',15,'Til montering af rem på stolper'),(15,'Firkantskiver 40x40x10mm.','stk',20,'Til montering af rem på stolper'),(16,'4,5x70mm. skruer 400stk','pakke',40,'Til montering af yderste beklædning'),(17,'4,5x50mm. skruer 300stk','pakke',40,'Til montering af yderste beklædning'),(18,'Stalddørsgreb 50x75','sæt',20,'Til lås på dør i skur'),(19,'T-Hængsel 390mm.','stk',20,'Til skurdør'),(20,'Vinkelbeslag 35','stk',15,'Til montering af løsholter i skur');
+/*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -91,7 +146,7 @@ CREATE TABLE `orders` (
   UNIQUE KEY `orderid_UNIQUE` (`orderid`),
   KEY `customerid_idx` (`customerid`),
   CONSTRAINT `customerid` FOREIGN KEY (`customerid`) REFERENCES `customer` (`customerid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +155,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (12,1,250,500,300,'2018-05-08');
+INSERT INTO `orders` VALUES (12,1,250,700,300,'2018-05-08'),(15,1,250,700,400,'2018-05-08'),(16,1,250,700,400,'2018-05-08'),(17,1,250,600,400,'2018-05-09'),(18,1,250,700,400,'2018-05-09'),(19,1,250,500,300,'2018-05-12'),(20,1,250,600,300,'2018-05-12'),(21,1,250,700,400,'2018-05-12'),(22,1,250,500,300,'2018-05-12'),(23,1,250,600,300,'2018-05-12'),(24,1,250,700,400,'2018-05-12'),(25,1,250,500,300,'2018-05-12'),(26,1,250,600,300,'2018-05-12'),(27,1,250,700,400,'2018-05-12'),(28,1,250,500,300,'2018-05-12'),(29,1,250,600,300,'2018-05-12'),(30,1,250,700,400,'2018-05-12'),(31,1,250,500,300,'2018-05-12'),(32,1,250,700,400,'2018-05-12'),(33,1,250,600,300,'2018-05-12'),(34,1,250,500,300,'2018-05-12'),(35,1,250,700,400,'2018-05-13'),(36,4,250,500,300,'2018-05-13'),(37,4,250,700,400,'2018-05-13'),(38,4,250,600,300,'2018-05-13'),(39,4,250,500,300,'2018-05-13'),(40,3,250,700,400,'2018-05-13'),(41,3,250,600,400,'2018-05-13'),(42,3,250,500,300,'2018-05-13'),(43,3,250,700,400,'2018-05-13'),(44,1,250,500,300,'2018-05-14');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,4 +195,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-08 10:23:33
+-- Dump completed on 2018-05-14 17:13:19

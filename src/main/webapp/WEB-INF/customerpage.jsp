@@ -12,8 +12,10 @@
         <title>Customer home page</title>
     </head>
     <body>
-        <%@include file="../includes/fogmenu.jsp" %> 
-        <h1>Hej <%=session.getAttribute("email")%> </h1>
+        <%@include file="../includes/customermenu.jsp" %> 
+        <div class="container">
+        <h2>Hej <%=session.getAttribute("email")%> </h2>
         Du er nu logget ind som kunde
+        </div>
     </body>
 </html>

@@ -12,11 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%@include file="../includes/fogmenu.jsp" %>
+        <%@include file="../includes/customermenu.jsp" %>
         
-        <h1>Her kan du se dine ordre</h1>
         <% List<Order> orders = (ArrayList<Order>) request.getAttribute("list");%>
-        <div class="orderTable2">   
+        <div class="container">
+            <h2>Her kan du se dine ordrer</h2>
             <table class="table">
                 <tr>
                     <th>Order ID</th>

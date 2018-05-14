@@ -17,7 +17,7 @@ public class GoToUpdateUser extends Command{
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        return "updateuser";
+        return "update" + request.getSession().getAttribute("role");
     }
     
 }

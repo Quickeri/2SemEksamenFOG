@@ -24,7 +24,7 @@ public class UpdateUser extends Command{
         int id = Integer.parseInt(request.getParameter("userid"));
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
+ 
         User user = new User (id, email, password);
         
         LogicFacade.updateUser(user);

@@ -16,11 +16,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%@include file="../includes/fogmenu.jsp" %>
+        <%@include file="../includes/employeemenu.jsp" %>
         <% Order o = (Order) request.getAttribute("order"); %>
         <% List<Item> stykliste = (ArrayList<Item>) request.getAttribute("stykliste"); %>
-        <h1>Se Ordre</h1>
-        <div id="orderTable">   
+ 
+        <div class="container">   
+            <h2>Se Ordre</h2>
             <table class="table">
                 <tr>
                     <th>Order ID</th>
@@ -40,8 +41,9 @@
                 </tr> 
             </table>              
         </div>
-        <h1>Stykliste</h1>
-        <div id="styklisteTable">   
+                
+        <div class="container">
+            <h2>Stykliste</h2>
             <table class="table">
                 <tr>
                     <th>Navn</th>
@@ -61,30 +63,42 @@
                 <% }%>
             </table>              
         </div>
-                    
-        <h1>Opdater Ordre</h1>            
-        <form name="updateorder" action="FrontController" method="POST">
-            <input type="hidden" name="command" value="updateorder">
-            <input type="hidden" name="orderid" value="<%= o.getOrderid() %>">
-            Længde:<br>
-            <input type="number" name="length" value="<%= o.getLength() %>" required>
-            <br>
-            Bredde:<br>
-            <input type="number" name="width" value="<%= o.getWidth() %>" required>
-            <br>
-            Højde:<br>
-            <input type="number" name="height" value="<%= o.getHeight() %>" required>
-            <br>
-            <input type="submit" value="Opdater Ordre">   
-        </form>
             
-        <h1>Slet Ordre</h1>      
+        <div class="container">            
+        <h2>Opdater Ordre</h2>            
+        <form name="updateorder" action="FrontController" method="POST">
+                <input type="hidden" name="command" value="updateorder">
+                <input type="hidden" name="orderid" value="<%= o.getOrderid() %>">
+            <div class="form-group">
+                <label for="length">Længde:</label>
+                <input type="number" name="length" id="length" class="form-control" value="<%= o.getLength() %>" required>
+            </div> 
+            <div class="form-group">
+                <label for="width">Bredde:</label>
+                <input type="number" name="width" id="width" class="form-control" value="<%= o.getWidth() %>" required>
+            </div> 
+            <div class="form-group">
+                <label for="height">Højde:</label>
+                <input type="number" name="height" id="height" class="form-control" value="<%= o.getHeight() %>" required>
+            </div> 
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Opdater Ordre</button>
+            </div> 
+        </form>
+        </div>
+        
+        <div class="container">
+        <h2>Slet Ordre</h2>      
         <form name="deleteorder" action="FrontController" method="POST">
             <input type="hidden" name="command" value="deleteorder">
             <input type="hidden" name="orderid" value="<%= o.getOrderid() %>">
-            <input type="submit" value="Slet Ordre" onclick="return confirm('Vil du slette denne ordre?')">   
+            <!--<input type="submit" value="Slet Ordre" onclick="return confirm('Vil du slette denne ordre?')">-->
+            <button type="submit" class="btn btn-default" onclick="return confirm('Vil du slette denne ordre?')">
+                <span class="glyphicon glyphicon-trash"></span>Slet Ordre
+            </button>
         </form>
+            <a href="FrontController?command=vieworders&page=1&orderby=orderid">Tilbage</a> 
+        </div>
             
-        <a href="FrontController?command=vieworders">Tilbage</a> 
     </body>
 </html>

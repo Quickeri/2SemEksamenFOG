@@ -24,6 +24,8 @@ abstract class Command {
         commands.put("deleteorder", new DeleteOrder());
         commands.put("gotoupdateuser", new GoToUpdateUser());
         commands.put("updateuser", new UpdateUser());
+        commands.put("searchitem", new SearchItem());
+        commands.put("viewitems", new ViewItems());
     }
 
     static Command from( HttpServletRequest request ) {
