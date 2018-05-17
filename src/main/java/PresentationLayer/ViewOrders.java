@@ -14,20 +14,20 @@ public class ViewOrders extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
        int page;
        int count = LogicFacade.countOrders();
-       int totalPages = count / 10;
+       int totalPages = (int) Math.ceil((double)count / 10);
        if(request.getParameter("page") != null){
            page = Integer.parseInt(request.getParameter("page"));  
        }
        else {
            page = 1;
        }
-       if(page < 1){
-           page = 1;
-       }    
-       if(page > totalPages){
-           page = totalPages;
-       }
-       
+//       if(page < 1){
+//           page = 1;
+//       }    
+//       if(page > totalPages){
+//           page = totalPages;
+//       }
+//       
        ArrayList<Order> orders = new ArrayList();
        if (request.getParameter("orderby") != null){
            String orderby = request.getParameter("orderby");

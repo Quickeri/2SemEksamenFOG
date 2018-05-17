@@ -14,7 +14,29 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View Items</title>
-        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script> 
+        $(document).ready(function(){
+            $("#viewitems").addClass('active'); 
+            var page = ${page};
+            var total = ${totalpages};
+            $("#page${param.page}").addClass('active'); 
+            if(page <= 1){
+            $("#previous").addClass('disabled');
+            $('#previous').click(function(e){
+                e.preventDefault();
+            });
+            }
+            if(page >= total){
+            $("#next").addClass('disabled');
+            $('#next').click(function(e){
+                e.preventDefault();
+            });
+            }
+        });
+       </script> 
     </head>
     <body>
         <%@include file="../includes/employeemenu.jsp" %>
@@ -30,7 +52,7 @@
         <form action="FrontController" method="post" id="formSearch">
             <input type="hidden" name="command" value="searchitem">
             <div class="form-group">
-            <input type="number" name="orderid" class="form-control" placeholder="itemid" required>
+            <input type="number" name="itemid" class="form-control" placeholder="itemid" required>
             </div>
             <div class="form-group">
             <button type="submit" class="btn btn-default">
@@ -62,17 +84,22 @@
                 </tr> 
                 <% }%>
             </table>    
-            Total items: <%=count%>
-            Page: <%=currentPage%> / <%=totalPages%>
+            Items i alt: <%=count%>
         </div>
         
         <div class="container">
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="FrontController?command=viewitems&page=<%=currentPage - 1%>&orderby=<%=orderby%>">Previous</a>
+                <li class="page-item" id="previous">
+                    <a class="page-link" href="FrontController?command=viewitems&page=<%=currentPage - 1%>&orderby=<%=orderby%>">Forrige</a>
+                </li>
                 <% for (int i = 1; i < totalPages + 1; i++) {%>
-                <li class="page-item"><a class="page-link" href="FrontController?command=viewitems&page=<%=i%>&orderby=<%=orderby%>"><%=i%></a>
+                <li class="page-item" id="page<%=i%>">
+                    <a class="page-link" href="FrontController?command=viewitems&page=<%=i%>&orderby=<%=orderby%>"><%=i%></a>
+                </li>
                 <% }%>
-                <li class="page-item"><a class="page-link" href="FrontController?command=viewitems&page=<%=currentPage + 1%>&orderby=<%=orderby%>">Next</a> 
+                <li class="page-item" id="next">
+                    <a class="page-link" href="FrontController?command=viewitems&page=<%=currentPage + 1%>&orderby=<%=orderby%>">Næste</a>
+                </li>
             </ul>  
         </div>
     </body>

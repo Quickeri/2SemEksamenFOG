@@ -5,6 +5,8 @@
  */
 package FunctionLayer;
 
+import java.util.List;
+
 /**
  *
  * @author Mads
@@ -15,12 +17,29 @@ public class ItemList {
     private int itemid;
     private int amount;
     private int price;
+    private List<Item> items;
 
     public ItemList(int orderid, int itemid, int amount, int price) {
         this.orderid = orderid;
         this.itemid = itemid;
         this.amount = amount;
         this.price = price;
+    }
+
+    public ItemList(int orderid, int itemid, int amount, int price, List<Item> items) {
+        this.orderid = orderid;
+        this.itemid = itemid;
+        this.amount = amount;
+        this.price = price;
+        this.items = items;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 
     public int getOrderid() {
