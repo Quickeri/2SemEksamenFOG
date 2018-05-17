@@ -11,6 +11,7 @@ import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,7 +23,7 @@ public class SearchOrder extends Command {
         int orderid = Integer.parseInt(request.getParameter( "orderid" ));
         if (LogicFacade.getOrder(orderid) != null){
             Order order = LogicFacade.getOrder(orderid);
-            ArrayList<Item> stykliste = cs.makeStykliste(order);
+            List<Item> stykliste = cs.makeStykliste(order).getItems();
             request.setAttribute("order", order);
             request.setAttribute("stykliste", stykliste);
             return "viewsingleorder";

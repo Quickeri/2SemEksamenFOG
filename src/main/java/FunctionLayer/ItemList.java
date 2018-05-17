@@ -19,6 +19,10 @@ public class ItemList {
     private int price;
     private List<Item> items;
 
+    public ItemList(){
+        
+    }
+    
     public ItemList(int orderid, int itemid, int amount, int price) {
         this.orderid = orderid;
         this.itemid = itemid;
@@ -74,4 +78,9 @@ public class ItemList {
         this.price = price;
     }
     
+    public void addItemList(ItemList itemList) {
+        for (int i = 0; i < itemList.getItems().size(); i++) {
+            items.add(itemList.getItems().get(i));
+        }
+    }
 }

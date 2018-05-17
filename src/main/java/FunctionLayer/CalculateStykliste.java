@@ -15,8 +15,10 @@ import java.util.ArrayList;
  */
 public class CalculateStykliste {
     
-    public ArrayList<Item> makeStykliste(Order o){
+    public ItemList makeStykliste(Order o){
+        ItemList itemList = new ItemList();
         ArrayList<Item> stykliste = new ArrayList();
+        
         int antalStolper = (o.getLength()/200 * 2) + (o.getWidth()/200); 
         int antalPlastmo = o.getLength()/(360-20);
         int spærLængde = 600;
@@ -29,6 +31,9 @@ public class CalculateStykliste {
         stykliste.add(new Item("Plastmo Ecolite blåtonet", 360, antalPlastmo, "stk", "Monteres på spær"));
         stykliste.add(new Item("Universalbeslag 190mm venstre", o.getLength()/55, "stk", "Til montering af spær på rem"));
         stykliste.add(new Item("Universalbeslag 190mm højre", o.getLength()/55, "stk", "Til montering af spær på rem"));
-        return stykliste;
+        
+        itemList.setItems(stykliste);
+        
+        return itemList;
     }
 }
