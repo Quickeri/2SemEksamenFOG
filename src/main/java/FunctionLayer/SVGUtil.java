@@ -11,19 +11,18 @@ public class SVGUtil {
      * Draw a carport from each side, using the length width and height, of an
      * Order, in different ways depending on which side is being drawn.
      */
-    
     // The distance between the beams of the carport on each drawing.
     private final int distanceRoof = 55;
     private final int distanceFront = 240;
     private final int distanceSide = 200;
-    
+
     // the distance to the parralel sides.
     private final int distToSide = 30;
 
     // the thickness measurements: width, height, of the carportPart.
     private int sizeLength = 0;
     private int sizeWidth = 0;
-    private int sizeHeight = 0;
+    private int sizeHeight = 20;
 
     private int roofPartQuantity;
     private int frontPartQuantity;
@@ -67,11 +66,11 @@ public class SVGUtil {
                 String rim = "front";
                 for (int i = 0; i < 2; i++) {
                     sb.append(carportPart(rim, length, sizeWidth, width - distToSide, sideRemnant(order, "roof")));
-                    width -= (width-distToSide) - distToSide;
+                    width -= (width - distToSide) - distToSide;
                 }
                 width = order.getWidth();
                 break;
-                
+
             case "front":
                 // 97 mm round up to 10 cm
                 sizeWidth = 10;
@@ -79,6 +78,11 @@ public class SVGUtil {
                     sb.append(carportPart(side, height, sizeWidth, width, 0));
                     width -= distanceFront;
                     frontPartQuantity = i + 1;
+                }
+                width = order.getWidth();
+                for (int i = 0; i < 1 + order.getWidth() / distanceFront; i++) {
+                    sb.append(carportPart("front", sizeHeight, sizeWidth, width, 0));
+                    width -= distanceFront;
                 }
                 width = order.getWidth();
                 break;
@@ -92,10 +96,13 @@ public class SVGUtil {
                     sidePartQuantity = i + 1;
                 }
                 length = order.getLength();
+                //horizontal rim
+                sb.append(carportPart("roof", length, sizeHeight, sideRemnant(order, "side"), 0));
                 break;
         }
         return sb.toString();
     }
+
     // an array of colors that can be picked for the carportPart.
     private static final String[] CARPORTPART_COL = {"none", "#5555FF", "#00DD00", "none", "#FF0000"};
 
@@ -128,7 +135,7 @@ public class SVGUtil {
         return res;
     }
 
-    // used for centering the carportParts on the drawing.
+    // used for centering the carportParts on the drawing. this is also used on the rectangles on the jsp page.
     public int sideRemnant(Order order, String side) {
         int remnant = 0;
         int remnantSW = sizeWidth / 2;
