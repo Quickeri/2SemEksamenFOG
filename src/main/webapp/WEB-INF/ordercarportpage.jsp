@@ -91,7 +91,7 @@
             <h4> Carporten set forfra</h4>
 
             <SVG width="<%= order.getWidth() + 300%>" height="<%= order.getHeight() + 300%>">
-            <rect x="<%= draw.sideRemnant(order,"front") %>" y="0" height="<%= order.getHeight()%>" width="<%= order.getWidth()%>"
+            <rect x="<%= draw.sideRemnant(order,"front") %>" y="20" height="<%= order.getHeight()%>" width="<%= order.getWidth()%>"
                   style="stroke:#000000; stroke-width: 4; fill: #F5F5DC"/>
             <%= draw.carport(order, "front") %>
             </SVG>
@@ -100,7 +100,7 @@
             <h4> Carporten set fra siden</h4>
 
             <SVG width="<%= order.getLength() + 300%>" height="<%= order.getHeight() + 300%>">
-            <rect x="<%=draw.sideRemnant(order, "side")%>" y="0" height="<%= order.getHeight()%>" width="<%= order.getLength()%>"
+            <rect x="<%=draw.sideRemnant(order, "side")%>" y="20" height="<%= order.getHeight()%>" width="<%= order.getLength()%>"
                   style="stroke:#000000; stroke-width: 4; fill: #F5F5DC"/>
             <%= draw.carport(order, "side") %>
             </SVG>
