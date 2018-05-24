@@ -44,7 +44,7 @@ public class CreateOrder extends Command {
         LogicFacade.createItemList(order, itemList);
         request.setAttribute("order", order);
         
-        return "ordercarportpage";
+        return "drawcarport";
     }
     
 }
