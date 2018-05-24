@@ -21,6 +21,16 @@ public class Item {
     private String description;
     private int price;
 
+    // Used in CalculateItemList
+    public Item(int itemid, String name, int amount, String unit, String description, int price) {
+        this.itemid = itemid;
+        this.name = name;
+        this.amount = amount;
+        this.unit = unit;
+        this.description = description;
+        this.price = price;
+    }
+
     public Item(int itemid, String name, String unit, int price, String description) {
         this.itemid = itemid;
         this.name = name;

@@ -17,11 +17,15 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script> 
+        $(document).ready(function(){
+            $("#vieworders").addClass('active');
+        });
+       </script> 
     </head>
     <body>
         <%@include file="../includes/employeemenu.jsp" %>
         <% Order o = (Order) request.getAttribute("order"); %>
-        <% List<Item> stykliste = (ArrayList<Item>) request.getAttribute("stykliste"); %>
  
         <div class="container">   
             <h2>Se Ordre</h2>
@@ -33,6 +37,7 @@
                     <th>Bredde</th>
                     <th>Højde</th>
                     <th>Dato</th>
+                    <th>Pris</th>
                 </tr>   
                 <tr>
                     <td> <%= o.getOrderid() %> </td>  
@@ -41,6 +46,7 @@
                     <td> <%= o.getWidth() %>cm </td>  
                     <td> <%= o.getHeight() %>cm </td>
                     <td> <%= o.getDate() %> </td>  
+                    <td> <%= o.getTotalPrice() %>kr. </td>  
                 </tr> 
             </table>              
         </div>
@@ -50,18 +56,16 @@
             <table class="table">
                 <tr>
                     <th>Navn</th>
-                    <th>Længde</th>
                     <th>Antal</th>
                     <th>Enhed</th>
                     <th>Beskrivelse</th>
                 </tr>  
-                <% for (Item s : stykliste) {%>
+                <% for (Item i : o.getItemlist()) {%>
                 <tr>
-                    <td> <%= s.getName() %>  </td>   
-                    <td> <%= s.getLength() %> </td>  
-                    <td> <%= s.getAmount() %> </td>  
-                    <td> <%= s.getUnit() %>  </td>  
-                    <td> <%= s.getDescription() %> </td>   
+                    <td> <%= i.getName() %>  </td>   
+                    <td> <%= i.getAmount() %> </td>  
+                    <td> <%= i.getUnit() %>  </td>  
+                    <td> <%= i.getDescription() %> </td>   
                 </tr> 
                 <% }%>
             </table>              

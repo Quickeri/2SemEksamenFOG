@@ -14,6 +14,17 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+       <script> 
+        $(document).ready(function(){
+            $("#viewitems").addClass('active');
+            if(${itemupdated == "success"}){
+                $("#updatealert").show();
+            }
+            else{
+                $("#updatealert").hide();
+            }         
+        });
+       </script> 
     </head>
     <body>
         <%@include file="../includes/employeemenu.jsp" %>
@@ -44,8 +55,12 @@
                 <button type="submit" class="btn btn-default">Opdater Item</button>
             </div> 
         </form>
-            <a href="FrontController?command=viewitems&page=1&orderby=itemid">Tilbage</a> 
-        </div>    
-         
+            <a href="FrontController?command=viewitems&page=1&orderby=itemid">Tilbage</a>
+            <div class="alert alert-success" id="updatealert">
+                <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+                <strong>Success!</strong> The item has been updated
+            </div>
+        </div>
+            
     </body>
 </html>

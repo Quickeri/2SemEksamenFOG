@@ -54,6 +54,9 @@ public class ViewOrders extends Command {
                    break;
            }
        }
+       else{
+           request.setAttribute("orderby", "date");
+       }
        request.setAttribute("list", orders);
        request.setAttribute("count", count);
        request.setAttribute("page", page);

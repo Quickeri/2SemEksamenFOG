@@ -5,9 +5,12 @@
  */
 package PresentationLayer;
 
+import FunctionLayer.CalculateItemList;
+import FunctionLayer.Item;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,8 +29,13 @@ public class UpdateOrder extends Command{
         Order order = new Order(orderid, length, width, height);
         
         if(LogicFacade.getOrder(orderid) != null){
+            CalculateItemList cs = new CalculateItemList();
             LogicFacade.updateOrder(order);
+            LogicFacade.deleteItemList(orderid);
+            ArrayList<Item> itemList = cs.makeItemList(order);
+            LogicFacade.createItemList(order, itemList);
         }
+        
         return "employeepage";
     }
     

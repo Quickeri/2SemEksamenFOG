@@ -35,6 +35,9 @@
                 e.preventDefault();
             });
             }
+            if(${searcherror == "notfound"}){
+                $("#searchalert").removeClass('hidden');
+            } 
         });
        </script> 
     </head>
@@ -52,7 +55,7 @@
         <form action="FrontController" method="post" id="formSearch">
             <input type="hidden" name="command" value="searchitem">
             <div class="form-group">
-            <input type="number" name="itemid" class="form-control" placeholder="itemid" required>
+            <input type="number" name="itemid" class="form-control" placeholder="itemid" min="1" max="1000" required>
             </div>
             <div class="form-group">
             <button type="submit" class="btn btn-default">
@@ -60,9 +63,11 @@
             </button>
             </div>
         </form>
+            <div class="alert alert-info hidden" id="searchalert">
+                <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+                <strong>Fejl!</strong> Intet item med dette itemnummer
+            </div>
         </div>
-        
-        ${searchError}
         
         <div class="container">   
             <table class="table">

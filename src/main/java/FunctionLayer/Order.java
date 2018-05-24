@@ -1,5 +1,6 @@
 package FunctionLayer;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 
 public class Order {
@@ -15,7 +16,25 @@ public class Order {
     private int length;
     private int width;
     private int height;
+    private int totalPrice;
     private String date;
+    private ArrayList<Item> itemlist;
+
+    public Order(int orderid, ArrayList<Item> itemlist) {
+        this.orderid = orderid;
+        this.itemlist = itemlist;
+    }
+
+    public Order(int orderid, int customerid, int length, int width, int height, int totalPrice, String date, ArrayList<Item> itemlist) {
+        this.orderid = orderid;
+        this.customerid = customerid;
+        this.length = length;
+        this.width = width;
+        this.height = height;
+        this.totalPrice = totalPrice;
+        this.date = date;
+        this.itemlist = itemlist;
+    }
 
     public Order(int orderid, String name, String email, int customerid, int length, int width, int height, String date) {
         this.orderid = orderid;
@@ -122,6 +141,22 @@ public class Order {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public ArrayList<Item> getItemlist() {
+        return itemlist;
+    }
+
+    public void setItemlist(ArrayList<Item> itemlist) {
+        this.itemlist = itemlist;
     }
 
     

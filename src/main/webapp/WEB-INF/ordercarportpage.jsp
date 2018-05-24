@@ -56,19 +56,30 @@
             <form name="createorder" action="FrontController" method="POST">
                     <input type="hidden" name="command" value="createorder">
                 <div class="form-group">
-                    <label for="length">Length:</label>
-                    <input type="number" name="length" id="length" class="form-control" required>
+                    <label for="length">Længde:</label>
+                    <input type="number" name="length" id="length" class="form-control" min="350" max="700" required>
                 </div>
                 <div class="form-group">
-                    <label for="width">Width:</label>
-                    <input type="number" name="width" id="width" class="form-control" required>
+                    <label for="width">Bredde:</label>
+                    <input type="number" name="width" id="width" class="form-control" min="350" max="800" required>
                 </div>
                 <div class="form-group">
-                    <label for="height">Height:</label>
-                    <input type="number" name="height" id="height" class="form-control" required>
+                    <label for="height">Højde:</label>
+                    <input type="number" name="height" id="height" class="form-control" min="250" max="300" required>
                 </div>
                 <div class="form-group">
-                     <button type="submit" class="btn btn-default">Bestil</button>
+                    <label for="skur">Redskabsskur:</label>
+                    <select name="skur" id="skur" class="form-control">
+                        <option value="yes">Ja</option>
+                        <option value="no">Nej</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="textarea">Bemærkninger:</label>
+                    <textarea name="textarea" id="textarea" class="form-control" rows="5" maxlength="100"></textarea>
+                </div>
+                <div class="form-group">
+                     <button type="submit" class="btn btn-default" id="orderbutton">Bestil</button>
                 </div>
         </form>
         </div>
@@ -76,9 +87,11 @@
                 Order order = (Order) request.getAttribute("order");
                 SVGUtil draw = new SVGUtil();
         %>
+         <div class="container">
         <table>
     <tr>
-        <td>    
+        <td>   
+       
             <h4> Carporten set ovenfra</h4>
 
             <SVG width="<%= order.getWidth() + 300%>" height="<%= order.getLength() + 300%>">
@@ -86,8 +99,10 @@
                   style="stroke:#000000; stroke-width: 4; fill: #F5F5DC"/>
             <%= draw.carport(order, "roof") %>
             </SVG>
+        
         </td>
-        <td>
+        <td> 
+    
             <h4> Carporten set forfra</h4>
 
             <SVG width="<%= order.getWidth() + 300%>" height="<%= order.getHeight() + 300%>">
@@ -95,8 +110,10 @@
                   style="stroke:#000000; stroke-width: 4; fill: #F5F5DC"/>
             <%= draw.carport(order, "front") %>
             </SVG>
+    
         </td>
-        <td>
+        <td> 
+    
             <h4> Carporten set fra siden</h4>
 
             <SVG width="<%= order.getLength() + 300%>" height="<%= order.getHeight() + 300%>">
@@ -104,9 +121,12 @@
                   style="stroke:#000000; stroke-width: 4; fill: #F5F5DC"/>
             <%= draw.carport(order, "side") %>
             </SVG>
+        
         </td>
     </tr>    
-        </table>
+        </table> 
+            
+            </div>
             <p> antal spær til tag: <%= draw.getPartQuantity("roof")%></p>
             <p> antal stolper til front: <%= draw.getPartQuantity("front")%></p>
             <p> antal stolper til side: <%= draw.getPartQuantity("side")%></p>

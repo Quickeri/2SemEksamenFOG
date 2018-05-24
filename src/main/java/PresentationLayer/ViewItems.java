@@ -63,6 +63,9 @@ public class ViewItems extends Command{
                    break;
            }
        }
+       else{
+           request.setAttribute("orderby", "itemid");
+       }
        request.setAttribute("list", items);
        request.setAttribute("count", count);
        request.setAttribute("totalpages", totalPages);

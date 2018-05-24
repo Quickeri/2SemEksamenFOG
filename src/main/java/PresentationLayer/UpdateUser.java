@@ -27,9 +27,12 @@ public class UpdateUser extends Command{
  
         User user = new User (id, email, password);
         
-        LogicFacade.updateUser(user);
+//        if(LogicFacade.getUser(id) != null){
+            LogicFacade.updateUser(user);
+            request.setAttribute("userupdated", "success");
+//        }
         
-        return request.getSession().getAttribute("role") + "page";
+        return "update" + request.getSession().getAttribute("role");
     }
     
 }

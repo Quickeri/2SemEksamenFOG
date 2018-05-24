@@ -25,6 +25,7 @@ abstract class Command {
         commands.put("gotoupdateuser", new GoToUpdateUser());
         commands.put("updateuser", new UpdateUser());
         commands.put("searchitem", new SearchItem());
+        commands.put("updateitem", new UpdateItem());
         commands.put("viewitems", new ViewItems());
     }
 

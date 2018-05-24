@@ -24,10 +24,20 @@ public class SearchItem extends Command{
         }
         else {
             ArrayList<Item> items = LogicFacade.getAllItemsByID(1);
+            int count = LogicFacade.countItems();
+            int totalPages = (int) Math.ceil((double)count / 10);
             request.setAttribute("list", items);
-            request.setAttribute("searchError", "Item not found");
+            request.setAttribute("count", count);
+            request.setAttribute("page", 1);
+            request.setAttribute("orderby", "itemid");
+            request.setAttribute("totalpages", totalPages);
+            request.setAttribute("searcherror", "notfound");
             return "viewitems";
         }
+//        
+//        else {
+//            throw new LoginSampleException( "Kunne ikke finde et item med dette itemid" );
+//        }
     }
     
 }

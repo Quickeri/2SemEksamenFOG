@@ -10,7 +10,7 @@
             </div>
             <ul class="nav navbar-nav">
                 <li id="emppage"><a href="FrontController?command=rolepage">Home</a></li>
-                <li id="vieworders"> <a href="FrontController?command=vieworders&page=1&orderby=orderid">Kundeordrer</a></li>
+                <li id="vieworders"> <a href="FrontController?command=vieworders&page=1&orderby=date">Kundeordrer</a></li>
                 <li id="viewitems"> <a href="FrontController?command=viewitems&page=1&orderby=itemid">Se Lager</a></li>
                 <li id="updateuser"> <a href="FrontController?command=gotoupdateuser">Opdater Bruger</a></li>
                 <li> <a href="FrontController?command=logout">Log Ud <span class="glyphicon glyphicon-log-out" name="icon"> </span></a></li>

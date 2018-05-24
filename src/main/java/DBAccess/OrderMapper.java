@@ -2,6 +2,7 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
+import com.mysql.cj.api.jdbc.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,12 +12,12 @@ import java.util.ArrayList;
 public class OrderMapper {
     
     // Creates an order
-    public static void createOrder(Order o) throws LoginSampleException{
+    public static Order createOrder(Order o) throws LoginSampleException{
         try {
             Connection con = Connector.connection();
             
             String SQL = "INSERT INTO orders VALUES(null, ?, ?, ?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement( SQL );
+            PreparedStatement ps = con.prepareStatement( SQL , Statement.RETURN_GENERATED_KEYS );
             
             ps.setInt(1, o.getCustomerid());
             ps.setInt(2, o.getHeight());
@@ -25,10 +26,16 @@ public class OrderMapper {
             ps.setString(5, o.getDate());
             
             ps.executeUpdate();
+            
+            ResultSet rs = ps.getGeneratedKeys();
+            rs.next();
+            int id = rs.getInt( 1 );
+            o.setOrderid( id );
         } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
-            throw new LoginSampleException( "Could not validate order" );
+            throw new LoginSampleException( "Could not create order" );
         }
+        return o;
     }
     
     // Updates an order
@@ -50,7 +57,7 @@ public class OrderMapper {
         } catch (SQLException | ClassNotFoundException ex)
         {
             ex.printStackTrace();
-            throw new LoginSampleException( "Could not validate order" );
+            throw new LoginSampleException( "Could not update order" );
         }
 //        return false;
     }
@@ -99,6 +106,7 @@ public class OrderMapper {
         catch (SQLException | ClassNotFoundException ex)
         {
             ex.printStackTrace();
+            throw new LoginSampleException( "Could not get order" );
         }
         return null;
     }
@@ -119,6 +127,7 @@ public class OrderMapper {
             }
         }catch(SQLException | ClassNotFoundException ex){
             ex.printStackTrace();
+            throw new LoginSampleException( "Could not count order" );
         }
         return count;
     }
@@ -147,6 +156,7 @@ public class OrderMapper {
             }
         }catch(SQLException | ClassNotFoundException ex){
             ex.printStackTrace();
+            throw new LoginSampleException( "Could not get the orders" );
         }
         return orders;
     }
@@ -181,6 +191,7 @@ public class OrderMapper {
             }
         }catch(SQLException | ClassNotFoundException ex){
             ex.printStackTrace();
+            throw new LoginSampleException( "Could not get the orders" );
         }
         return orders;
     }
@@ -214,6 +225,7 @@ public class OrderMapper {
             }
         }catch(SQLException | ClassNotFoundException ex){
             ex.printStackTrace();
+            throw new LoginSampleException( "Could not get the orders" );
         }
         return orders;
     }
@@ -247,6 +259,7 @@ public class OrderMapper {
             }
         }catch(SQLException | ClassNotFoundException ex){
             ex.printStackTrace();
+            throw new LoginSampleException( "Could not get the orders" );
         }
         return orders;
     }
@@ -258,7 +271,7 @@ public class OrderMapper {
             
         String SQL = "select orders.orderid, customer.name, customer.email, orders.Height, "
                 + "orders.Length, orders.Width, orders.date, orders.customerid from customer "
-                + "inner join orders on customer.customerid = orders.customerid ORDER BY date LIMIT ?, 10";
+                + "inner join orders on customer.customerid = orders.customerid ORDER BY date DESC, orderid DESC LIMIT ?, 10";
         PreparedStatement ps = con.prepareStatement( SQL );
         ps.setInt(1, (page - 1) * 10);
         ResultSet rs = ps.executeQuery();
@@ -280,6 +293,7 @@ public class OrderMapper {
             }
         }catch(SQLException | ClassNotFoundException ex){
             ex.printStackTrace();
+            throw new LoginSampleException( "Could not get the orders" );
         }
         return orders;
     }

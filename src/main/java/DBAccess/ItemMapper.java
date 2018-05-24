@@ -7,6 +7,7 @@ package DBAccess;
 
 import FunctionLayer.Item;
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,20 +38,21 @@ public class ItemMapper {
             throw new LoginSampleException( "Could not create item" );
         }
     }
-    
+     
     // Updates an item
     public static boolean updateItem(Item i) throws LoginSampleException{
         try
         {
         Connection con = Connector.connection();
         
-        String SQL = "UPDATE items SET name = ?, unit = ?, price = ?, description = ? WHERE orderid = ?";
+        String SQL = "UPDATE items SET name = ?, unit = ?, price = ?, description = ? WHERE itemid = ?";
             PreparedStatement ps = con.prepareStatement( SQL );
             
             ps.setString(1, i.getName());
             ps.setString(2, i.getUnit());
             ps.setInt(3, i.getPrice());
             ps.setString(4, i.getDescription());
+            ps.setInt(5, i.getItemid());
             ps.executeUpdate();
             
             return true;
@@ -105,6 +107,7 @@ public class ItemMapper {
         catch (SQLException | ClassNotFoundException ex)
         {
             ex.printStackTrace();
+            throw new LoginSampleException( "Could not get the item" );
         }
         return null;
     }
@@ -125,6 +128,7 @@ public class ItemMapper {
             }
         }catch(SQLException | ClassNotFoundException ex){
             ex.printStackTrace();
+            throw new LoginSampleException( "Could not count the items" );
         }
         return count;
     }
@@ -155,6 +159,7 @@ public class ItemMapper {
         catch (SQLException | ClassNotFoundException ex)
         {
             ex.printStackTrace();
+            throw new LoginSampleException( "Could not get the items" );
         }
         return items;
     }
@@ -185,6 +190,7 @@ public class ItemMapper {
         catch (SQLException | ClassNotFoundException ex)
         {
             ex.printStackTrace();
+            throw new LoginSampleException( "Could not get the items" );
         }
         return items;
     }
@@ -215,6 +221,7 @@ public class ItemMapper {
         catch (SQLException | ClassNotFoundException ex)
         {
             ex.printStackTrace();
+            throw new LoginSampleException( "Could not get the items" );
         }
         return items;
     }
@@ -245,7 +252,8 @@ public class ItemMapper {
         catch (SQLException | ClassNotFoundException ex)
         {
             ex.printStackTrace();
+            throw new LoginSampleException( "Could not get the items" );
         }
         return items;
-    }
+    } 
 }

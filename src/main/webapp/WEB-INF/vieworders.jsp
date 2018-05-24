@@ -34,6 +34,9 @@
                 e.preventDefault();
             });
             }
+            if(${searcherror == "notfound"}){
+                $("#searchalert").removeClass('hidden');
+            }          
         });
        </script> 
     </head>
@@ -51,7 +54,7 @@
         <form action="FrontController" method="post" id="formSearch">
                 <input type="hidden" name="command" value="searchorder">
             <div class="form-group">
-                <input type="number" name="orderid" class="form-control" placeholder="orderid" required>
+                <input type="number" name="orderid" class="form-control" placeholder="orderid" min="1" max="1000" required>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-default">
@@ -59,7 +62,10 @@
                 </button>
             </div>
         </form>
-        ${searchError}
+            <div class="alert alert-info hidden" id="searchalert">
+                <button class="close" data-dismiss="alert" aria-label="close">&times;</button>
+                <strong>Fejl!</strong> Ingen ordre med dette ordrenummer
+            </div>
         </div>
   
         <div class="container">   
@@ -72,7 +78,7 @@
                     <th>Længde</th>
                     <th>Bredde</th>
                     <th>Højde</th>       
-                    <th><a href="FrontController?command=vieworders&page=<%=currentPage%>&orderby=date">Dato</a></th>   
+                    <th><a href="FrontController?command=vieworders&page=<%=currentPage%>&orderby=date">Dato</a></th> 
                 </tr>
 
                 <% for (Order o : orders) {%>
@@ -100,6 +106,6 @@
                 <li class="page-item" id="next"><a class="page-link" href="FrontController?command=vieworders&page=${param.page + 1}&orderby=<%=orderby%>">Næste</a></li> 
             </ul>  
         </div>
-          
+       
     </body>
 </html>

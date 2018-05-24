@@ -1,99 +1,104 @@
-package FunctionLayer;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package DBAccess;
 
-import DBAccess.DBFacade;
+import FunctionLayer.Item;
+import FunctionLayer.LoginSampleException;
+import FunctionLayer.Order;
+import FunctionLayer.User;
 import java.util.ArrayList;
 
 /**
- * The purpose of LogicFacade is to...
- * @author kasper
+ *
+ * @author Mads
  */
-public class LogicFacade {
-
+public class DBFacade {
     public static User login( String email, String password ) throws LoginSampleException {
-        return DBFacade.login( email, password );
+        return UserMapper.login( email, password );
     } 
 
-    public static User createUser( String name, String email, String password ) throws LoginSampleException {
-        User user = new User( name, email, password, "customer" );
-        DBFacade.createUser( user );
+    public static User createUser( User user ) throws LoginSampleException {
+        UserMapper.createUser( user );
         return user;
     }
     public static User updateUser( User user ) throws LoginSampleException {
-        DBFacade.updateUser( user );
+        UserMapper.updateUser( user );
         return user;
     }
-    public static Order createOrder( int customerid, int length, int width, int height, String date ) throws LoginSampleException {
-        Order o = new Order( customerid, length, width, height, date );
-        Order order = DBFacade.createOrder( o );
+    public static Order createOrder( Order o) throws LoginSampleException {
+        Order order = OrderMapper.createOrder( o );
         return order;
     }
     public static boolean updateOrder( Order o ) throws LoginSampleException {
-        return DBFacade.updateOrder( o );   
+        return OrderMapper.updateOrder( o );   
     }
     public static boolean deleteOrder( int orderid ){
-        return DBFacade.deleteOrder( orderid );
+        return OrderMapper.deleteOrder( orderid );
     }
     public static Order getOrder( int orderid ) throws LoginSampleException{
-        Order order = DBFacade.getOrder( orderid );
+        Order order = OrderMapper.getOrder( orderid );
         return order;
     }
     public static ArrayList<Order> getOrders( int userid ) throws LoginSampleException{
-        ArrayList<Order> orders = DBFacade.getOrders( userid );
+        ArrayList<Order> orders = OrderMapper.getOrders( userid );
         return orders;
     }
     public static int countOrders() throws LoginSampleException {
-        return DBFacade.countOrders();
+        return OrderMapper.countOrders();
     }
     public static int countItems() throws LoginSampleException {
-        return DBFacade.countItems();
+        return ItemMapper.countItems();
     }
     public static void createItemList(Order o, ArrayList<Item> item) throws LoginSampleException{
-        DBFacade.createItemList(o, item);
+        ItemListMapper.createItemList(o, item);
     }
     public static ArrayList<Item> getItemList(int orderid) throws LoginSampleException{
-        ArrayList<Item> itemList = DBFacade.getItemList(orderid);
+        ArrayList<Item> itemList = ItemListMapper.getItemList(orderid);
         return itemList;
     }
     public static void deleteItemList(int orderid) throws LoginSampleException{
-        DBFacade.deleteItemList(orderid);
+        ItemListMapper.deleteItemList(orderid);
     }
     public static ArrayList<Order> getAllOrdersByOrderid(int page) throws LoginSampleException{
-        ArrayList<Order> orders = DBFacade.getAllOrdersByOrderid(page);
+        ArrayList<Order> orders = OrderMapper.getAllOrdersByOrderid(page);
         return orders;
     }
     public static ArrayList<Order> getAllOrdersByCustomerid(int page) throws LoginSampleException{
-        ArrayList<Order> orders = DBFacade.getAllOrdersByCustomerid(page);
+        ArrayList<Order> orders = OrderMapper.getAllOrdersByCustomerid(page);
         return orders;
     }
     public static ArrayList<Order> getAllOrdersByName(int page) throws LoginSampleException{
-        ArrayList<Order> orders = DBFacade.getAllOrdersByName(page);
+        ArrayList<Order> orders = OrderMapper.getAllOrdersByName(page);
         return orders;
     }
     public static ArrayList<Order> getAllOrdersByDate(int page) throws LoginSampleException{
-        ArrayList<Order> orders = DBFacade.getAllOrdersByDate(page);
+        ArrayList<Order> orders = OrderMapper.getAllOrdersByDate(page);
         return orders;
     }
     public static Item getItem( int itemid ) throws LoginSampleException{
-        Item item = DBFacade.getItem( itemid );
+        Item item = ItemMapper.getItem( itemid );
         return item;
     }
     public static boolean updateItem( Item i ) throws LoginSampleException {
-        return DBFacade.updateItem( i );   
+        return ItemMapper.updateItem( i );   
     }
     public static ArrayList<Item> getAllItemsByID(int page) throws LoginSampleException{
-        ArrayList<Item> items = DBFacade.getAllItemsByID(page);
+        ArrayList<Item> items = ItemMapper.getAllItemsByID(page);
         return items;
     }
     public static ArrayList<Item> getAllItemsByName(int page) throws LoginSampleException{
-        ArrayList<Item> items = DBFacade.getAllItemsByName(page);
+        ArrayList<Item> items = ItemMapper.getAllItemsByName(page);
         return items;
     }
     public static ArrayList<Item> getAllItemsByUnit(int page) throws LoginSampleException{
-        ArrayList<Item> items = DBFacade.getAllItemsByUnit(page);
+        ArrayList<Item> items = ItemMapper.getAllItemsByUnit(page);
         return items;
     }
     public static ArrayList<Item> getAllItemsByPrice(int page) throws LoginSampleException{
-        ArrayList<Item> items = DBFacade.getAllItemsByPrice(page);
+        ArrayList<Item> items = ItemMapper.getAllItemsByPrice(page);
         return items;
     }
 }
