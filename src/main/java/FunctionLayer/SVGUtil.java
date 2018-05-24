@@ -15,6 +15,8 @@ public class SVGUtil {
     private final int distanceRoof = 55;
     private final int distanceFront = 240;
     private final int distanceSide = 200;
+    private final int xOffset = 50;
+    private final int yOffset = 50;
 
     // the distance to the parralel sides.
     private final int distToSide = 30;
@@ -25,6 +27,7 @@ public class SVGUtil {
     private int sizeHeight = 20;
     
     private int roofHeight = 20;
+    
     
     private int frameThickness = 5;
 
@@ -49,7 +52,7 @@ public class SVGUtil {
                 // 45 mm round up to 5 cm
                 sizeWidth = 5;
                 for (int i = 0; i < 1 + order.getLength() / distanceRoof; i++) {
-                    sb.append(carportPart(side, width, sizeWidth, 0, length));
+                    sb.append(carportPart(side, width, sizeWidth, 0 + xOffset, length + yOffset));
                     length -= distanceRoof;
                     roofPartQuantity = i + 1;
                 }
@@ -57,27 +60,29 @@ public class SVGUtil {
                 //creates longest 2 sides of roof frame. "front" is used to set it to vertical direction.
                 String frameVertical = "front";
                 for (int i = 0; i < 2; i++) {
-                    sb.append(carportPart(frameVertical, length, sizeWidth, width, sideRemnant(order, "roof")));
+                    sb.append(carportPart(frameVertical, length, sizeWidth, width + xOffset, sideRemnant(order, "roof") + yOffset));
                     width -= width;
                 }
                 width = order.getWidth();
                 // creates shortest 2 sides of roof frame, the horizontal ones on the drawing.
                 for (int i = 0; i < 2; i++) {
-                    sb.append(carportPart(side, width, sizeWidth, 0, length + sideRemnant(order, "roof")));
+                    sb.append(carportPart(side, width, sizeWidth, 0 + xOffset, length + sideRemnant(order, "roof") + yOffset));
                     length -= (length + sizeWidth);
                 }
                 length = order.getLength();
                 String rim = "front";
                     for(int i = 0; i < 2; i++){
-                    sb.append(carportPart(rim, length, sizeWidth, width - distToSide, sideRemnant(order, "roof")));
+                    sb.append(carportPart(rim, length, sizeWidth, width - distToSide + xOffset, sideRemnant(order, "roof") + yOffset));
                     width -= width - distToSide * 2;
                     }
-                width = order.getWidth();
-                    for(int i = 0; i < 1 + order.getWidth() / distanceFront; i++){
-                    sb.append(carportPart(rim, length, sizeWidth, width - distToSide, sideRemnant(order, "roof")));    
-                    width-= distanceFront;
-                    width-= distToSide/(1 + order.getWidth() / distanceFront);
-                    }
+                  //The code below was to add more rims in case there were more front pillars due to a very wide carport.
+                  //It was scrapped as it isn't found neccessary in the beginning.
+//                width = order.getWidth();
+//                    for(int i = 0; i < 1 + order.getWidth() / distanceFront; i++){
+//                    sb.append(carportPart(rim, length, sizeWidth, width - distToSide, sideRemnant(order, "roof")));    
+//                    width-= distanceFront;
+//                    width-= distToSide/(1 + order.getWidth() / distanceFront);
+//                    }
                 width = order.getWidth();
                 break;
 
@@ -85,34 +90,34 @@ public class SVGUtil {
                 // 97 mm round up to 10 cm
                 sizeWidth = 10;
                 for (int i = 0; i < 1 + order.getWidth() / distanceFront; i++) {
-                    sb.append(carportPart(side, height, sizeWidth, width, roofHeight));
+                    sb.append(carportPart(side, height, sizeWidth, width + xOffset, roofHeight + yOffset));
                     width -= distanceFront;
                     frontPartQuantity = i + 1;
                 }
                 // vertical rim
                 width = order.getWidth();
                 for (int i = 0; i < 1 + order.getWidth() / distanceFront; i++) {
-                    sb.append(carportPart("front", sizeHeight, sizeWidth, width, roofHeight));
+                    sb.append(carportPart("front", sizeHeight, sizeWidth, width + xOffset, roofHeight + yOffset));
                     width -= distanceFront;
                 }
                 width = order.getWidth();
                 //roof
-                sb.append(carportPart("roof", width, sizeHeight, sideRemnant(order, "front"), 0));
+                sb.append(carportPart("roof", width, sizeHeight, sideRemnant(order, "front") + xOffset, 0 + yOffset));
                 break;
                 
             case "side":
                 // 97 mm round up to 10 cm
                 sizeWidth = 10;
                 for (int i = 0; i < 1 + order.getLength() / distanceSide; i++) {
-                    sb.append(carportPart(side, height, sizeWidth, length, roofHeight));
+                    sb.append(carportPart(side, height, sizeWidth, length + xOffset, roofHeight + yOffset));
                     length -= distanceSide;
                     sidePartQuantity = i + 1;
                 }
                 length = order.getLength();
                 //horizontal rim
-                sb.append(carportPart("roof", length, sizeHeight, sideRemnant(order, "side"), roofHeight));
+                sb.append(carportPart("roof", length, sizeHeight, sideRemnant(order, "side") + xOffset, roofHeight + yOffset));
                 //roof
-                sb.append(carportPart("roof", length + frameThickness*2, roofHeight, sideRemnant(order, "side") - frameThickness, 0));
+                sb.append(carportPart("roof", length + frameThickness*2, roofHeight, sideRemnant(order, "side") - frameThickness + xOffset, 0 + yOffset));
                 break;
         }
         return sb.toString();
