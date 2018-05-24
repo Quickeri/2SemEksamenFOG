@@ -13,7 +13,7 @@ public class SVGUtil {
      */
     // The distance between the beams of the carport on each drawing.
     private final int distanceRoof = 55;
-    private final int distanceFront = 240;
+    private final int distanceFront = 250;
     private final int distanceSide = 200;
     private final int xOffset = 50;
     private final int yOffset = 50;
@@ -89,20 +89,20 @@ public class SVGUtil {
             case "front":
                 // 97 mm round up to 10 cm
                 sizeWidth = 10;
-                for (int i = 0; i < 1 + order.getWidth() / distanceFront; i++) {
-                    sb.append(carportPart(side, height, sizeWidth, width + xOffset, roofHeight + yOffset));
-                    width -= distanceFront;
+                for (int i = 0; i < 2; i++) {
+                    sb.append(carportPart(side, height, sizeWidth, width - distToSide + sideRemnant(order, side) + xOffset, roofHeight + yOffset));
+                    width -= width - distToSide * 2;
                     frontPartQuantity = i + 1;
                 }
                 // vertical rim
                 width = order.getWidth();
-                for (int i = 0; i < 1 + order.getWidth() / distanceFront; i++) {
-                    sb.append(carportPart("front", sizeHeight, sizeWidth, width + xOffset, roofHeight + yOffset));
-                    width -= distanceFront;
+                for (int i = 0; i < 2; i++) {
+                    sb.append(carportPart(side, sizeHeight, sizeWidth, width - distToSide + sideRemnant(order, side) + xOffset, roofHeight + yOffset));
+                    width -= width - distToSide * 2;
                 }
                 width = order.getWidth();
                 //roof
-                sb.append(carportPart("roof", width, sizeHeight, sideRemnant(order, "front") + xOffset, 0 + yOffset));
+                sb.append(carportPart("roof", width, sizeHeight, sideRemnant(order, side) + xOffset, 0 + yOffset));
                 break;
                 
             case "side":
@@ -164,7 +164,7 @@ public class SVGUtil {
                 remnant = remnantSW + (order.getLength() % distanceRoof) / 2;
                 break;
             case "front":
-                remnant = remnantSW + (order.getWidth() % distanceFront) / 2;
+                remnant = remnantSW + (order.getWidth() % (order.getWidth() - distToSide * 2)) / 2;
                 break;
             case "side":
                 remnant = remnantSW + (order.getLength() % distanceSide) / 2;
