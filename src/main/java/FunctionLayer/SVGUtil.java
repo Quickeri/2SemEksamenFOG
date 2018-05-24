@@ -3,7 +3,7 @@ package FunctionLayer;
 /**
  * The purpose of SVGUtil is to...
  *
- * @author kasper
+ * @author Albert Scheel Vandel (AV98)
  */
 public class SVGUtil {
 
@@ -11,10 +11,11 @@ public class SVGUtil {
      * Draw a carport from each side, using the length width and height, of an
      * Order, in different ways depending on which side is being drawn.
      */
-    // The distance between the beams of the carport on each drawing.
+    // The distance between the beams of the carport on each drawing, on the sides where this is constant.
     private final int distanceRoof = 55;
-    private final int distanceFront = 250;
     private final int distanceSide = 200;
+    
+    // the offset on the drawing is used to make space for ruler lines.
     private final int xOffset = 50;
     private final int yOffset = 50;
 
@@ -90,14 +91,14 @@ public class SVGUtil {
                 // 97 mm round up to 10 cm
                 sizeWidth = 10;
                 for (int i = 0; i < 2; i++) {
-                    sb.append(carportPart(side, height, sizeWidth, width - distToSide + sideRemnant(order, side) + xOffset, roofHeight + yOffset));
+                    sb.append(carportPart(side, height, sizeWidth, width - distToSide + sideRemnant(order, side) + xOffset - 5, roofHeight + yOffset));
                     width -= width - distToSide * 2;
                     frontPartQuantity = i + 1;
                 }
                 // vertical rim
                 width = order.getWidth();
                 for (int i = 0; i < 2; i++) {
-                    sb.append(carportPart(side, sizeHeight, sizeWidth, width - distToSide + sideRemnant(order, side) + xOffset, roofHeight + yOffset));
+                    sb.append(carportPart(side, sizeHeight, sizeWidth, width - distToSide + sideRemnant(order, side) + xOffset - 5, roofHeight + yOffset));
                     width -= width - distToSide * 2;
                 }
                 width = order.getWidth();
