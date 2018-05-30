@@ -5,7 +5,6 @@
  */
 package PresentationLayer;
 
-import FunctionLayer.CalculateItemList;
 import FunctionLayer.Item;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
@@ -19,13 +18,13 @@ public class SearchOrder extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        CalculateItemList cs = new CalculateItemList();
+      
         int orderid = Integer.parseInt(request.getParameter( "orderid" ));
         if (LogicFacade.getOrder(orderid) != null){
             Order order = LogicFacade.getOrder(orderid);
             
             ArrayList<Item> itemList = LogicFacade.getItemList(orderid);
-            int totalPrice = cs.calcTotalPrice(itemList);
+            int totalPrice = LogicFacade.calcTotalPrice(itemList);
             order.setItemlist(itemList);
             order.setTotalPrice(totalPrice);
             

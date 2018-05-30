@@ -50,6 +50,14 @@ public class LogicFacade {
     public static void createItemList(Order o, ArrayList<Item> item) throws LoginSampleException{
         DBFacade.createItemList(o, item);
     }
+    public static ArrayList<Item> makeItemList(Order o) throws LoginSampleException{
+        ArrayList<Item> itemList = CalculateItemList.makeItemList(o);
+        return itemList;
+    }
+    public static int calcTotalPrice(ArrayList<Item> itemList) throws LoginSampleException{
+        int totalPrice = CalculateItemList.calcTotalPrice(itemList);
+        return totalPrice;
+    }
     public static ArrayList<Item> getItemList(int orderid) throws LoginSampleException{
         ArrayList<Item> itemList = DBFacade.getItemList(orderid);
         return itemList;

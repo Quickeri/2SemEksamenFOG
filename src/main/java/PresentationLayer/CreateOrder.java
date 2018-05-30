@@ -5,7 +5,6 @@
  */
 package PresentationLayer;
 
-import FunctionLayer.CalculateItemList;
 import FunctionLayer.Item;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
@@ -38,9 +37,8 @@ public class CreateOrder extends Command {
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(dt);
         
-        CalculateItemList cs = new CalculateItemList();
         Order order = LogicFacade.createOrder(customerId, length, width, height, date);
-        ArrayList<Item> itemList = cs.makeItemList(order);
+        ArrayList<Item> itemList = LogicFacade.makeItemList(order);
         LogicFacade.createItemList(order, itemList);
         request.setAttribute("order", order);
         
