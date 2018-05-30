@@ -18,34 +18,6 @@ USE `fogcarport`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `carport`
---
-
-DROP TABLE IF EXISTS `carport`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `carport` (
-  `carportid` int(11) NOT NULL AUTO_INCREMENT,
-  `carportName` varchar(45) NOT NULL,
-  `roofType` varchar(45) NOT NULL,
-  `roofShape` varchar(45) NOT NULL,
-  PRIMARY KEY (`carportid`),
-  UNIQUE KEY `carportid_UNIQUE` (`carportid`),
-  UNIQUE KEY `carportName_UNIQUE` (`carportName`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `carport`
---
-
-LOCK TABLES `carport` WRITE;
-/*!40000 ALTER TABLE `carport` DISABLE KEYS */;
-INSERT INTO `carport` VALUES (1,'enkelt rejset tag','rejset','betonsten'),(2,'enkelt flat tag','flat','plasttrapez'),(3,'enkest rejset tag med skur','rejset','betonsten'),(4,'enktelt flat tag med skur','flat','plasttrapez');
-/*!40000 ALTER TABLE `carport` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `customer`
 --
 
@@ -60,7 +32,7 @@ CREATE TABLE `customer` (
   `role` varchar(45) NOT NULL DEFAULT 'customer',
   PRIMARY KEY (`customerid`),
   UNIQUE KEY `customerid_UNIQUE` (`customerid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,7 +119,7 @@ CREATE TABLE `orders` (
   UNIQUE KEY `orderid_UNIQUE` (`orderid`),
   KEY `customerid_idx` (`customerid`),
   CONSTRAINT `customerid` FOREIGN KEY (`customerid`) REFERENCES `customer` (`customerid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -159,33 +131,6 @@ LOCK TABLES `orders` WRITE;
 INSERT INTO `orders` VALUES (12,1,250,700,300,'2018-05-08'),(13,1,250,500,300,'2018-05-08'),(14,1,250,600,350,'2018-05-08'),(15,1,250,600,400,'2018-05-08'),(16,1,250,700,400,'2018-05-08'),(17,1,250,600,400,'2018-05-09'),(18,1,250,700,400,'2018-05-09'),(19,1,250,500,300,'2018-05-12'),(20,1,250,600,300,'2018-05-12'),(21,1,250,700,400,'2018-05-12'),(22,1,250,500,300,'2018-05-12'),(23,1,250,600,300,'2018-05-12'),(24,1,250,700,400,'2018-05-12'),(25,1,250,500,300,'2018-05-12'),(26,1,250,600,300,'2018-05-12'),(27,1,250,700,400,'2018-05-12'),(28,1,250,500,300,'2018-05-12'),(29,1,250,600,300,'2018-05-12'),(30,1,250,700,400,'2018-05-12'),(31,1,250,500,300,'2018-05-12'),(32,1,250,700,400,'2018-05-12'),(33,1,250,600,300,'2018-05-12'),(34,1,250,500,300,'2018-05-12'),(35,1,250,700,400,'2018-05-13'),(36,4,250,500,300,'2018-05-13'),(37,4,250,700,400,'2018-05-13'),(38,4,250,600,300,'2018-05-13'),(39,4,250,500,300,'2018-05-13'),(41,3,250,600,400,'2018-05-13'),(42,3,250,500,300,'2018-05-13'),(43,3,250,700,400,'2018-05-13'),(44,1,250,500,300,'2018-05-14'),(45,1,250,600,300,'2018-05-15'),(46,1,250,700,400,'2018-05-16'),(47,1,250,700,400,'2018-05-17'),(48,1,250,700,400,'2018-05-18'),(49,1,250,700,400,'2018-05-18'),(50,1,250,700,400,'2018-05-18'),(51,1,250,700,400,'2018-05-18'),(52,1,250,600,300,'2018-05-18'),(53,1,250,700,400,'2018-05-18'),(54,1,250,700,400,'2018-05-18'),(55,1,250,700,400,'2018-05-18'),(56,1,250,600,300,'2018-05-18'),(57,1,250,500,250,'2018-05-18'),(58,1,250,500,250,'2018-05-18'),(59,1,250,500,300,'2018-05-18'),(60,1,250,700,400,'2018-05-18'),(61,1,250,500,300,'2018-05-18'),(62,1,250,700,400,'2018-05-24'),(63,1,250,700,400,'2018-05-24'),(64,1,250,600,300,'2018-05-24'),(65,1,250,500,300,'2018-05-24'),(66,1,250,500,300,'2018-05-24'),(67,1,250,600,300,'2018-05-24'),(68,1,250,500,300,'2018-05-24'),(69,1,250,500,300,'2018-05-24'),(70,1,250,500,300,'2018-05-24'),(71,1,250,500,300,'2018-05-24'),(72,1,250,600,300,'2018-05-24'),(73,1,250,600,300,'2018-05-24');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `standardcarport`
---
-
-DROP TABLE IF EXISTS `standardcarport`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `standardcarport` (
-  `stdcarportid` int(11) NOT NULL AUTO_INCREMENT,
-  `heigth` int(11) NOT NULL,
-  `length` int(11) NOT NULL,
-  `width` int(11) NOT NULL,
-  `stddescription` text,
-  PRIMARY KEY (`stdcarportid`),
-  UNIQUE KEY `idstandardcarport_UNIQUE` (`stdcarportid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `standardcarport`
---
-
-LOCK TABLES `standardcarport` WRITE;
-/*!40000 ALTER TABLE `standardcarport` DISABLE KEYS */;
-/*!40000 ALTER TABLE `standardcarport` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -196,4 +141,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-24 18:16:20
+-- Dump completed on 2018-05-30 14:19:59
