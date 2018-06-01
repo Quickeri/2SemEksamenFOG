@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DBAccess;
 
 import FunctionLayer.Item;
@@ -11,10 +6,6 @@ import FunctionLayer.Order;
 import FunctionLayer.User;
 import java.util.ArrayList;
 
-/**
- *
- * @author Mads
- */
 public class DBFacade {
     public static User login( String email, String password ) throws LoginSampleException {
         return UserMapper.login( email, password );

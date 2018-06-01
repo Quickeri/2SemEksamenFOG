@@ -1,9 +1,3 @@
-<%-- 
-    Document   : viewitems
-    Created on : 10-05-2018, 12:32:05
-    Author     : Mads
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="FunctionLayer.Item"%>
 <%@page import="java.util.ArrayList"%>

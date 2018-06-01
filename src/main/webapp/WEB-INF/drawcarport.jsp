@@ -1,8 +1,3 @@
-<%-- 
-    Document   : drawcarport
-    Created on : 24-05-2018, 12:59:40
-    Author     : Mads
---%>
 
 <%@page import="FunctionLayer.SVGUtil"%>
 <%@page import="FunctionLayer.Order"%>

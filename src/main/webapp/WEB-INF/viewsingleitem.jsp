@@ -1,9 +1,3 @@
-<%-- 
-    Document   : viewsingleitem
-    Created on : 10-05-2018, 12:47:20
-    Author     : Mads
---%>
-
 <%@page import="FunctionLayer.Item"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

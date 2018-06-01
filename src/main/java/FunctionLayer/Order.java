@@ -1,13 +1,9 @@
 package FunctionLayer;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class Order {
-
-    //                Order o = new Order(orderid, name, email, carportid, length, width, height, customerid);
-
-    
+   
     private int orderid;
     private String name;
     private String email;

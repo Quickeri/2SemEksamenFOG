@@ -2,7 +2,7 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
-import com.mysql.cj.api.jdbc.Statement;
+import com.mysql.jdbc.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -59,7 +59,6 @@ public class OrderMapper {
             ex.printStackTrace();
             throw new LoginSampleException( "Could not update order" );
         }
-//        return false;
     }
     
     // Deletes an order

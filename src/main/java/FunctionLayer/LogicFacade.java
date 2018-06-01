@@ -3,10 +3,6 @@ package FunctionLayer;
 import DBAccess.DBFacade;
 import java.util.ArrayList;
 
-/**
- * The purpose of LogicFacade is to...
- * @author kasper
- */
 public class LogicFacade {
 
     public static User login( String email, String password ) throws LoginSampleException {

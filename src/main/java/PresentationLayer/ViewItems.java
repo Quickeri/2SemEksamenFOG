@@ -13,10 +13,6 @@ import java.util.Collections;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Mads
- */
 public class ViewItems extends Command{
 
     @Override
@@ -30,12 +26,7 @@ public class ViewItems extends Command{
        else {
            page = 1;
        }
-//       if(page < 1){
-//           page = 1;
-//       }    
-//       if(page > totalPages){
-//           page = totalPages;
-//       }
+
         
        ArrayList<Item> items = new ArrayList();
        if (request.getParameter("orderby") != null){

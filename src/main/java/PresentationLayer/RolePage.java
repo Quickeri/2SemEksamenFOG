@@ -9,6 +9,5 @@ public class RolePage extends Command{
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         return request.getSession().getAttribute("role") + "page";
-    }
-    
+    }   
 }

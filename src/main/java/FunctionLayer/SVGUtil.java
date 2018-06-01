@@ -1,10 +1,5 @@
 package FunctionLayer;
 
-/**
- * The purpose of SVGUtil is to...
- *
- * @author Albert Scheel Vandel (AV98)
- */
 public class SVGUtil {
 
     /**
@@ -76,14 +71,7 @@ public class SVGUtil {
                     sb.append(carportPart(rim, length, sizeWidth, width - distToSide + xOffset, sideRemnant(order, "roof") + yOffset));
                     width -= width - distToSide * 2;
                     }
-                  //The code below was to add more rims in case there were more front pillars due to a very wide carport.
-                  //It was scrapped as it isn't found neccessary in the beginning.
-//                width = order.getWidth();
-//                    for(int i = 0; i < 1 + order.getWidth() / distanceFront; i++){
-//                    sb.append(carportPart(rim, length, sizeWidth, width - distToSide, sideRemnant(order, "roof")));    
-//                    width-= distanceFront;
-//                    width-= distToSide/(1 + order.getWidth() / distanceFront);
-//                    }
+
                 width = order.getWidth();
                 break;
 

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : vieworder
-    Created on : May 1, 2018, 2:25:01 PM
-    Author     : Jesper Outzen
---%>
-
 <%@page import="FunctionLayer.Item"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -99,7 +93,6 @@
         <form name="deleteorder" action="FrontController" method="POST">
             <input type="hidden" name="command" value="deleteorder">
             <input type="hidden" name="orderid" value="<%= o.getOrderid() %>">
-            <!--<input type="submit" value="Slet Ordre" onclick="return confirm('Vil du slette denne ordre?')">-->
             <button type="submit" class="btn btn-default" onclick="return confirm('Vil du slette denne ordre?')">
                 <span class="glyphicon glyphicon-trash"></span>Slet Ordre
             </button>

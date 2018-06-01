@@ -5,12 +5,6 @@
  */
 package FunctionLayer;
 
-import java.util.Comparator;
-
-/**
- *
- * @author Mads
- */
 public class Item {
     
     private int itemid;

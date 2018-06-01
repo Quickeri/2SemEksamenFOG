@@ -27,5 +27,4 @@ public class Register extends Command {
             throw new LoginSampleException( "De to passwords er ikke ens" );
         }
     }
-
 }

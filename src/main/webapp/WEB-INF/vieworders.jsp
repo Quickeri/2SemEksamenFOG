@@ -1,9 +1,3 @@
-<%-- 
-    Document   : vieworders
-    Created on : 24-04-2018, 10:50:32
-    Author     : Mads
---%>
-
 <%@page import="FunctionLayer.Order"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>

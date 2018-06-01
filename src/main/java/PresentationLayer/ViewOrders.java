@@ -4,7 +4,6 @@ import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
 import java.util.ArrayList;
-import java.util.Collections;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,13 +20,7 @@ public class ViewOrders extends Command {
        else {
            page = 1;
        }
-//       if(page < 1){
-//           page = 1;
-//       }    
-//       if(page > totalPages){
-//           page = totalPages;
-//       }
-//       
+   
        ArrayList<Order> orders = new ArrayList();
        if (request.getParameter("orderby") != null){
            String orderby = request.getParameter("orderby");

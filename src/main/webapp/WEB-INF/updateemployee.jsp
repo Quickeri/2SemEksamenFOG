@@ -1,8 +1,3 @@
-<%-- 
-    Document   : updateuser
-    Created on : 02-05-2018, 21:55:55
-    Author     : Mads
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DBAccess;
 
 import FunctionLayer.Item;
@@ -14,10 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author Mads
- */
 public class ItemListMapper {
     // Creates an itemlist
     public static void createItemList(Order o, ArrayList<Item> item) throws LoginSampleException{
